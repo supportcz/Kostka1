@@ -1,0 +1,13 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker + Rainer
+ ********************************************************************
+ * Program: ncsdcctrl
+ * File: ncsdcctrl.var
+ * Author: vancurar
+ * Created: August 06, 2015
+ ********************************************************************
+ * Local variables of program ncsdcctrl
+ ********************************************************************)
+VAR
+	gAxis02_oSetPosOld : INT := 0;
+END_VAR
