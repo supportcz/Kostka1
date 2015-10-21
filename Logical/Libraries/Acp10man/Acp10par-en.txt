@@ -142,8 +142,8 @@
   143: Trace: Delay time relative to trigger event
   144: Trace: Maximum length of data
   145: CTRL Controller: Mode of controller cascade cycle times
-  146: RESERVED146
-  147: RESERVED147
+  146: CTRL Position controller: Parameter ID for cyclic set position
+  147: CTRL Position controller: Start movement with cyclic position set values
   148: RESERVED148
   149: RESERVED149
   150: Limit values: Waiting time before message 'target position reached'
@@ -1254,10 +1254,10 @@
  1260: Motor holding brake: Type
  1261: Motor holding brake: Resistance
  1262: Motor holding brake: Inductance
- 1266: Motor holding brake: Test duration
- 1267: Holding torque measured at the time the brake engages
- 1268: Brake test: Test torque
- 1269: RESERVED1269
+ 1266: Motor holding brake test: Test duration
+ 1267: Motor holding brake test: Torque measured at the time the brake engages
+ 1268: Motor holding brake test: Test torque
+ 1269: Motor holding brake test: Torque slew rate
  1270: CTRL Torque limiter: Absolute value of positive current limit
  1271: CTRL Torque limiter: Absolute value of negative current limit
  1272: MAINSSIM_MODE
@@ -1305,7 +1305,7 @@
  1314: Virtual Encoder: Parameter ID of input value time
  1315: Virtual Encoder: Time constant for actual position filter
  1316: Virtual Encoder: Extrapolation time for actual position filter
- 1317: Encoder 1: Commutation offset
+ 1317: Encoder1: Commutation offset
  1318: Encoderless control: Parameter-ID Transition
  1320: Virtual Encoder: Mode
  1321: Virtual Encoder: Actual position per revolution
@@ -1495,24 +1495,20 @@
  1507: Basis movements: Set value generator mode
  1508: VAX Basis movements: Set value generator mode
  1509: Axis crosslink: Encoder2: Actual position
- 1510: Backlash compensation: Command
- 1511: Backlash compensation: Compensation time
- 1512: Backlash compensation: inertia in backlash
- 1513: Backlash compensation: Noise limit
- 1514: Backlash compensation: Pos. arrester
- 1515: Backlash compensation: Neg. arrester
- 1516: Backlash compensation: Difference position
- 1517: Backlash compensation: Compensation output
+ 1510: Pitch error-backlash compensation: Mode
+ 1511: Pitch error-backlash compensation: Compensation time
+ 1512: Pitch error-backlash compensation: Inertia in backlash
+ 1513: Pitch error-backlash compensation: Noise limit
+ 1514: Pitch error-backlash compensation: Parameter ID for positive arrester
+ 1515: Pitch error-backlash compensation: Parameter ID for negative arrester
+ 1516: Pitch error-backlash compensation: Load position
+ 1517: Pitch error-backlash compensation: Compensation output
  1518: CTRL DC bus: Controller: Lower enable threshold
  1519: CTRL DC bus: Controller: Upper enable threshold
  1520: Virtual Encoder: Actual delay time
  1521: Encoder1: Maximum speed vor serial position
  1522: Simulation mode: Positive backlash parameter
  1523: Simulation mode: Negative backlash parameter
- 1524: Backlash compensation: Load inertia
- 1525: Backlash compensation: viscous friction of load
- 1526: Encoder1: Compensated actual position
- 1527: Encoder1: Additive position
  1528: Encoder2: Diagnosis 2
  1529: Encoder2: Diagnosis 3
  1530: Encoder3: Diagnosis 2
@@ -1525,6 +1521,8 @@
  1538: Power stage: Temperature sensor 5: Temperature
  1539: Power stage: Rectifier: Temperature
  1540: Power stage: Main relay: Temperature
+ 1541: Pitch error-backlash compensation: Maximal speed of flange change
+ 1542: Pitch error-backlash compensation: Status
  1544: DC bus: Capacitor: Temperature
  1545: DC bus: Continuous total power: Load
  1546: DC bus: Peak total power: Load

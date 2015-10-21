@@ -249,8 +249,10 @@
  #define mcBELOW_WINDOW 50U
  #define mcBASIS_PARAMETERS 2
  #define mcAXIS_WARNING 1U
+ #define mcAXIS_PERIOD_MAPPING 1020
  #define mcAXIS_PERIOD 1008
  #define mcAXIS_NETWORK_CYCLE_TIME 1018
+ #define mcAXIS_FACTOR_MAPPING 1019
  #define mcAXIS_FACTOR 1007
  #define mcAXIS_ERROR 0U
  #define mcAVERAGE_WEIGHTED 4U
@@ -508,8 +510,10 @@
  _IEC_CONST unsigned char mcBELOW_WINDOW = 50U;
  _IEC_CONST float mcBASIS_PARAMETERS = 2;
  _IEC_CONST unsigned char mcAXIS_WARNING = 1U;
+ _IEC_CONST signed short mcAXIS_PERIOD_MAPPING = 1020;
  _IEC_CONST signed short mcAXIS_PERIOD = 1008;
  _IEC_CONST signed short mcAXIS_NETWORK_CYCLE_TIME = 1018;
+ _IEC_CONST signed short mcAXIS_FACTOR_MAPPING = 1019;
  _IEC_CONST signed short mcAXIS_FACTOR = 1007;
  _IEC_CONST unsigned char mcAXIS_ERROR = 0U;
  _IEC_CONST unsigned short mcAVERAGE_WEIGHTED = 4U;
@@ -3527,10 +3531,10 @@ typedef struct MC_TouchProbe
 	/* VAR (analog) */
 	unsigned long C_Axis;
 	struct MC_TRIGGER_REF C_TriggerInput;
-	float C_FirstPosition;
-	float C_LastPosition;
+	signed long C_FirstPosition;
+	signed long C_LastPosition;
 	unsigned short C_ErrorID;
-	float C_RecordedPosition;
+	signed long C_RecordedPosition;
 	unsigned char SavedToDrvCnt;
 	unsigned char Reserve2;
 	unsigned char state;

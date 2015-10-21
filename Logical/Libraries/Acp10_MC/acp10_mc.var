@@ -18,8 +18,10 @@ VAR CONSTANT
 	mcAVERAGE_WEIGHTED : UINT := 4;
 	mcAXIS_ERROR : USINT := 0;
 	mcAXIS_FACTOR : INT := 1007; (*PLCopen motion parameter*)
+	mcAXIS_FACTOR_MAPPING : INT := 1019; (*PLCopen motion parameter*)
 	mcAXIS_NETWORK_CYCLE_TIME: INT := 1018; (*PLCopen motion parameter*)
 	mcAXIS_PERIOD : INT := 1008; (*PLCopen motion parameter*)
+	mcAXIS_PERIOD_MAPPING : INT := 1020; (*PLCopen motion parameter*)
 	mcAXIS_WARNING : USINT := 1;
 	mcBASIS_PARAMETERS : REAL := 2.0; (*Option for DefaultMoveParameter*)
 	mcBELOW_WINDOW : USINT := 50; (*trigger event mode*)

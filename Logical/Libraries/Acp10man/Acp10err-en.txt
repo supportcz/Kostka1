@@ -136,6 +136,7 @@
  5040: Jolt limiter: Too many changes in acceleration - Movement stopped
  5041: Jolt limiter: Command not allowed
  5042: Jolt limiter: Too many changes in acceleration - Command not possible
+ 5043: Homing procedure mode not possible: Compensation active
  5101: Cam profile compensation gears: Limit values exceeded
        Info(USINT): State index
  5102: Too many changes of cam profile per cycle (master period too short)
@@ -1070,6 +1071,8 @@
 32252: NcNetCyc: Unexpected Response (invalid counter value)
 32253: The task class for POWERLINK output cycle trigger is invalid
        Info(USINT): Maximum task class number
+32254: No PDO mapping defined (PDO mapping is required for this ACOPOS ID)
+       Info(USINT): ACOPOS ID
 32259: There are currently no trace data to be saved
 32260: Trace: No valid test data point is defined
 32261: Trace trigger: The NC object is invalid
@@ -1695,6 +1698,12 @@
        Info(USINT): Slot
 39048: Encoder: Incorrect command code acknowledgment
        Info(USINT): Slot
+39049: Encoder: Timeout during parameter transfer
+       Info(USINT): Slot
+39050: Encoder: Parity
+       Info(USINT): Slot
+39051: Encoder: Hiperface error bit
+       Info(USINT): Slot
 39301: Digital IO: 24V power supply fail
        Info(UINT): Slot
 39302: Digital IO 1-4: Diagnose bit active (current, 24V supply)
@@ -1707,6 +1716,70 @@
        Info(UINT): Slot
 39307: Digital IO: outputs deactivated by output mask after network error
        Info(UINT): Slot
+39500: Encoder: HIPERFACE: Status: Incorrect alignment data (01h)
+       Info(USINT): Slot
+39501: Encoder: HIPERFACE: Status: Sensor not adjusted or in adjustment mode (20h)
+       Info(USINT): Slot
+39502: Encoder: HIPERFACE: Status: Distance measure/sensor too high (21h)
+       Info(USINT): Slot
+39504: Encoder: HIPERFACE: Status: Linear position fault (23h)
+       Info(USINT): Slot
+39510: Encoder: HIPERFACE: Status: The encoder has not detected any faults (00h)
+       Info(USINT): Slot
+39511: Encoder: HIPERFACE: Status: Analog signals outside specification (01h)
+       Info(USINT): Slot
+39512: Encoder: HIPERFACE: Status: Incorrect internal angular offset (02h)
+       Info(USINT): Slot
+39513: Encoder: HIPERFACE: Status: Data field partitioning table destroyed (03h)
+       Info(USINT): Slot
+39514: Encoder: HIPERFACE: Status: Analog limit values not available (04h)
+       Info(USINT): Slot
+39515: Encoder: HIPERFACE: Status: Internal I²C bus not operational (05h)
+       Info(USINT): Slot
+39516: Encoder: HIPERFACE: Status: Internal checksum error (06h)
+       Info(USINT): Slot
+39517: Encoder: HIPERFACE: Status: Program watchdog fault (07h)
+       Info(USINT): Slot
+39518: Encoder: HIPERFACE: Status: Counter overflow (08h)
+       Info(USINT): Slot
+39519: Encoder: HIPERFACE: Status: Parity error (09h)
+       Info(USINT): Slot
+39520: Encoder: HIPERFACE: Status: Checksum error (0Ah)
+       Info(USINT): Slot
+39521: Encoder: HIPERFACE: Status: Unknown command (0Bh)
+       Info(USINT): Slot
+39522: Encoder: HIPERFACE: Status: Wrong command length (0Ch)
+       Info(USINT): Slot
+39523: Encoder: HIPERFACE: Status: Wrong command argument (0Dh)
+       Info(USINT): Slot
+39524: Encoder: HIPERFACE: Status: Read-only data field (0Eh)
+       Info(USINT): Slot
+39525: Encoder: HIPERFACE: Status: Incorrect access code (0Fh)
+       Info(USINT): Slot
+39526: Encoder: HIPERFACE: Status: Out of memory fault (10h)
+       Info(USINT): Slot
+39527: Encoder: HIPERFACE: Status: Wrong data field offset (11h)
+       Info(USINT): Slot
+39528: Encoder: HIPERFACE: Status: Wrong data field number (12h)
+       Info(USINT): Slot
+39538: Encoder: HIPERFACE: Status: Value monitoring analog signals (1Ch)
+       Info(USINT): Slot
+39539: Encoder: HIPERFACE: Status: Transmitter current critical (1Dh)
+       Info(USINT): Slot
+39540: Encoder: HIPERFACE: Status: Encoder temperature critical (1Eh)
+       Info(USINT): Slot
+39541: Encoder: HIPERFACE: Status: Speed too high (1Fh)
+       Info(USINT): Slot
+39542: Encoder: HIPERFACE: Status: Singleturn position unreliable (20h)
+       Info(USINT): Slot
+39543: Encoder: HIPERFACE: Status: Multiturn amplitude fault (21h)
+       Info(USINT): Slot
+39544: Encoder: HIPERFACE: Status: Multiturn sync fault (22h)
+       Info(USINT): Slot
+39545: Encoder: HIPERFACE: Status: Multiturn vectorlength fault (23h)
+       Info(USINT): Slot
+39546: Encoder: HIPERFACE: Status: Multiturn counter fault (24h)
+       Info(USINT): Slot
 40000: Parameter ID only for tests
 41001: Heatsink temperature sensor: Warning limit exceeded
        Info(REAL): Heatsink temperature

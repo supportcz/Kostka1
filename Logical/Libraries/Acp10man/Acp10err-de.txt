@@ -136,6 +136,7 @@
  5040: Ruckbegrenzer: Zu viele Beschleunigungsänderungen - Bewegungs-Abbruch
  5041: Ruckbegrenzer: Kommando nicht erlaubt
  5042: Ruckbegrenzer: Zu viele Beschleunigungsänd. - Kommando nicht möglich
+ 5043: Referenzieren nicht möglich: Kompensation aktiv
  5101: Kurvenscheiben-Ausgleichsgetriebe: Grenzwerte überschritten
        Info(USINT): Zustands-Index
  5102: Zu viele Kurvenwechsel pro Zyklus (Masterperiode zu kurz)
@@ -1070,6 +1071,8 @@
 32252: NcNetCyc: Unerwartete Response (ungültiger Zählerwert)
 32253: Die Taskklasse für POWERLINK Output-Zyklus Trigger ist ungültig
        Info(USINT): Maximale Taskklassennummer
+32254: Kein PDO Mapping definiert (PDO Mapping ist für diese ACOPOS ID erforderlich)
+       Info(USINT): ACOPOS ID
 32259: Derzeit sind keine Trace-Daten zum Sichern vorhanden
 32260: Trace: Es ist kein gültiger Testdatenpunkt definiert
 32261: Trace Trigger: Das NC-Objekt ist ungültig
@@ -1695,6 +1698,12 @@
        Info(USINT): Slot
 39048: Geber: Fehlerhafte Befehlscodequittierung
        Info(USINT): Slot
+39049: Geber: Timeout beim Parameter übertragen
+       Info(USINT): Slot
+39050: Geber: Parity
+       Info(USINT): Slot
+39051: Geber: Hiperface Error Bit
+       Info(USINT): Slot
 39301: Digital IO: 24V-Spannungsversorgung fehlerhaft
        Info(UINT): Slot
 39302: Digital IO 1-4: Diagnosebit aktiv (Strom, 24V Versorgung)
@@ -1707,6 +1716,70 @@
        Info(UINT): Slot
 39307: Digital IO: Ausgänge nach Netzwerkfehler mittels Ausgangsmaske deaktiviert
        Info(UINT): Slot
+39500: Geber: HIPERFACE: Status: Abgleichdaten fehlerhaft (01h)
+       Info(USINT): Slot
+39501: Geber: HIPERFACE: Status: Sensor nicht eingestellt oder gerade dabei (20h)
+       Info(USINT): Slot
+39502: Geber: HIPERFACE: Status: Abstand Maßstab/Sensor zu hoch (21h)
+       Info(USINT): Slot
+39504: Geber: HIPERFACE: Status: Linear Positionsfehler (23h)
+       Info(USINT): Slot
+39510: Geber: HIPERFACE: Status: Der Geber hat keinen Fehler erkannt (00h)
+       Info(USINT): Slot
+39511: Geber: HIPERFACE: Status: Analogsignale außerhalb Spezifikation (01h)
+       Info(USINT): Slot
+39512: Geber: HIPERFACE: Status: Fehlerhafter Interner Winkeloffset (02h)
+       Info(USINT): Slot
+39513: Geber: HIPERFACE: Status: Datenfeld Partitionstabelle zerstört (03h)
+       Info(USINT): Slot
+39514: Geber: HIPERFACE: Status: Analoge Grenzwerte nicht verfügbar (04h)
+       Info(USINT): Slot
+39515: Geber: HIPERFACE: Status: Interner I²C-Bus nicht funktionsfähig (05h)
+       Info(USINT): Slot
+39516: Geber: HIPERFACE: Status: Interner Checksummenfehler (06h)
+       Info(USINT): Slot
+39517: Geber: HIPERFACE: Status: Programmüberwachungs-Fehler (07h)
+       Info(USINT): Slot
+39518: Geber: HIPERFACE: Status: Überlauf des Zählers (08h)
+       Info(USINT): Slot
+39519: Geber: HIPERFACE: Status: Parityfehler (09h)
+       Info(USINT): Slot
+39520: Geber: HIPERFACE: Status: Checksummenfehler (0Ah)
+       Info(USINT): Slot
+39521: Geber: HIPERFACE: Status: Unbekannter Befehl (0Bh)
+       Info(USINT): Slot
+39522: Geber: HIPERFACE: Status: Falsche Befehlslänge (0Ch)
+       Info(USINT): Slot
+39523: Geber: HIPERFACE: Status: Falscher Befehlsargument (0Dh)
+       Info(USINT): Slot
+39524: Geber: HIPERFACE: Status: Schreibgeschütztes Datenfeld (0Eh)
+       Info(USINT): Slot
+39525: Geber: HIPERFACE: Status: Falscher Zugriffscode (0Fh)
+       Info(USINT): Slot
+39526: Geber: HIPERFACE: Status: Ungenügend-Speicher-Fehler (10h)
+       Info(USINT): Slot
+39527: Geber: HIPERFACE: Status: Falscher Datenfeld Offset (11h)
+       Info(USINT): Slot
+39528: Geber: HIPERFACE: Status: Falsche Datenfeldnummer (12h)
+       Info(USINT): Slot
+39538: Geber: HIPERFACE: Status: Betragsüberwachung Analogsignale (1Ch)
+       Info(USINT): Slot
+39539: Geber: HIPERFACE: Status: Senderstrom kritisch (1Dh)
+       Info(USINT): Slot
+39540: Geber: HIPERFACE: Status: Gebertemperatur kritisch (1Eh)
+       Info(USINT): Slot
+39541: Geber: HIPERFACE: Status: Drehzahl zu hoch (1Fh)
+       Info(USINT): Slot
+39542: Geber: HIPERFACE: Status: Singleturn Position unzuverlässig (20h)
+       Info(USINT): Slot
+39543: Geber: HIPERFACE: Status: Multiturn Amplitudenfehler (21h)
+       Info(USINT): Slot
+39544: Geber: HIPERFACE: Status: Multiturn Synchronisierungsfehler (22h)
+       Info(USINT): Slot
+39545: Geber: HIPERFACE: Status: Multiturn Zeigerlängenfehler (23h)
+       Info(USINT): Slot
+39546: Geber: HIPERFACE: Status: Multiturn Zählerfehler (24h)
+       Info(USINT): Slot
 40000: Parameter-ID nur für Tests
 41001: Kühler-Temperatursensor: Warngrenze überschritten
        Info(REAL): Kühlertemperatur

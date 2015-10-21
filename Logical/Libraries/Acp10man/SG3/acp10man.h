@@ -2,7 +2,7 @@
 *                    B & R   P O S I T I O N I N G                          *
 *****************************************************************************
 *                                                                           *
-*            Header File for Library ACP10MAN (Version 2491)                * 
+*            Header File for Library ACP10MAN (Version 2501)                * 
 *                                                                           *
 **************************** COPYRIGHT (C) **********************************
 *     THIS SOFTWARE IS THE PROPERTY OF B&R AUSTRIA: ALL RIGHTS RESERVED.    *
@@ -11,7 +11,7 @@
 ****************************************************************************/
 
 #ifndef ACP10MAN_H_VERSION 
-#define ACP10MAN_H_VERSION 0x2491 
+#define ACP10MAN_H_VERSION 0x2501 
 
 #include <ncglobal.h>
 #include <acp10par.h>

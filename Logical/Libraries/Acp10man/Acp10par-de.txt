@@ -142,8 +142,8 @@
   143: Trace: Verzögerungszeit relativ zum Trigger-Ereignis
   144: Trace: Maximallänge der Daten
   145: CTRL Regler: Modus der Reglerkaskaden-Zykluszeiten
-  146: RESERVED146
-  147: RESERVED147
+  146: CTRL Lageregler: Parameter-ID für zyklische Sollposition
+  147: CTRL Lageregler: Bewegung mit zyklischer Positionsvorgabe starten
   148: RESERVED148
   149: RESERVED149
   150: Grenzwerte: Wartezeit vor Meldung 'Zielposition erreicht'
@@ -1254,10 +1254,10 @@
  1260: Motor-Haltebremse: Typ
  1261: Motor-Haltebremse: Widerstand
  1262: Motor-Haltebremse: Induktivität
- 1266: Motor-Haltebremse: Prüfdauer
- 1267: Haltemoment zum Zeitpunkt wenn die Bremse einfällt
- 1268: Haltemomentprüfung: Prüfmoment
- 1269: RESERVED1269
+ 1266: Motorhaltebremstest: Prüfdauer
+ 1267: Motorhaltebremstest: Moment zum Zeitpunkt wenn die Bremse einfällt
+ 1268: Motorhaltebremstest: Prüfmoment
+ 1269: Motorhaltebremstest: Anstiegsrate des Prüfmoments
  1270: CTRL Momentbegrenzer: Betrag positiver Stromgrenzwert
  1271: CTRL Momentbegrenzer: Betrag negativer Stromgrenzwert
  1272: MAINSSIM_MODE
@@ -1305,7 +1305,7 @@
  1314: Virtueller Geber: Parameter-ID des Eingangswertes Zeit
  1315: Virtueller Geber: Zeitkonstante für Istpositions-Filter
  1316: Virtueller Geber: Extrapolations-Zeit für Istpositions-Filter
- 1317: Geber 1: Kommutierungsoffset
+ 1317: Geber1: Kommutierungsoffset
  1318: Geberloser Betrieb: Parameter-ID Überblendung
  1320: Virtueller Geber: Modus
  1321: Virtueller Geber: Istposition pro Umdrehung
@@ -1495,24 +1495,20 @@
  1507: Basis-Bewegungen: Sollwertgenerator Modus
  1508: VAX Basis-Bewegungen: Sollwertgenerator Modus
  1509: Achsen Querverbindung: Geber2: Istposition
- 1510: Losekompensation: Kommando
- 1511: Losekompensation: Kompensationszeit
- 1512: Losekompensation: Trägheitsmoment in Lose
- 1513: Losekompensation: Rauschgrenze
- 1514: Losekompensation: Pos. Anschlag
- 1515: Losekompensation: Neg. Anschlag
- 1516: Losekompensation: Differenzposition
- 1517: Losekompensation: Kompensationsausgang
+ 1510: Spindelsteigungsfehler-Losekompensation: Modus
+ 1511: Spindelsteigungsfehler-Losekompensation: Kompensationszeit
+ 1512: Spindelsteigungsfehler-Losekompensation: Trägheitsmoment in Lose
+ 1513: Spindelsteigungsfehler-Losekompensation: Rauschgrenze
+ 1514: Spindelsteigungsfehler-Losekompensation: Parameter-ID für positiven Anschlag
+ 1515: Spindelsteigungsfehler-Losekompensation: Parameter-ID für negativen Anschlag
+ 1516: Spindelsteigungsfehler-Losekompensation: Lastposition
+ 1517: Spindelsteigungsfehler-Losekompensation: Kompensationsausgang
  1518: CTRL Zwischenkreis: Regler: Untere Freigabeschwelle
  1519: CTRL Zwischenkreis: Regler: Obere Freigabeschwelle
  1520: Virtueller Geber: Aktuelle Verzögerungszeit
  1521: Geber1: Maximale Geschwindikeit für serielle Position
  1522: Simulationsmodus: Loseparameter pos. Anschlag
  1523: Simulationsmodus: Loseparameter neg. Anschlag
- 1524: Losekompensation: Lastträgheitsmasse
- 1525: Losekompensation: Viskose Reibung der Last
- 1526: Geber1: Kompensierte Istposition
- 1527: Geber1: Additive Position
  1528: Geber2: Diagnosewert 2
  1529: Geber2: Diagnosewert 3
  1530: Geber3: Diagnosewert 2
@@ -1525,6 +1521,8 @@
  1538: Leistungsteil: Temperatursensor 5: Temperatur
  1539: Leistungsteil: Gleichrichter: Temperatur
  1540: Leistungsteil: Hauptrelais: Temperatur
+ 1541: Spindelsteigungsfehler-Losekompensation: Maximale Geschwindigkeit beim Losewechsel
+ 1542: Spindelsteigungsfehler-Losekompensation: Status
  1544: Zwischenkreis: Kondensator: Temperatur
  1545: Zwischenkreis: Dauersummenleistung: Last
  1546: Zwischenkreis: Spitzensummenleistung: Last
