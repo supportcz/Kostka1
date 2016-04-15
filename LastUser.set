@@ -3,5 +3,6 @@
 <ProjectSettings xmlns="http://br-automation.co.at/AS/ProjectSettings">
   <ConfigurationManager ActiveConfigurationName="Config1" />
   <Deployment Value="ActiveCpu" />
+  <ExportProject ExportFilePath="C:\Work\BaR\Kostka1.zip" />
   <Print Footer="%cPage: %p" Header="%lProject: %n%c%x" />
 </ProjectSettings>

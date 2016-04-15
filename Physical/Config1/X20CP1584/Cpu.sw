@@ -19,7 +19,6 @@
     <NcDataObject Name="gAxis01a" Source="_MpAxis01.gAxis01a.dob" Memory="UserROM" Language="Apt" />
     <NcDataObject Name="gAxis01i" Source="_MpAxis01.gAxis01i.dob" Memory="UserROM" Language="Ax" />
     <NcDataObject Name="gAxis02a" Source="_MpAxis02.gAxis02a.dob" Memory="UserROM" Language="Apt" />
-    <NcDataObject Name="gAxis02i" Source="_MpAxis02.gAxis02i.dob" Memory="UserROM" Language="Ax" />
     <NcDataObject Name="acp10etxen" Source="acp10etxen.dob" Memory="UserROM" Language="Ett" />
   </NcDataObjects>
   <VcDataObjects>

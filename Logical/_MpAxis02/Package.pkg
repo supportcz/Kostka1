@@ -4,7 +4,6 @@
   <Objects>
     <Object Type="File">_MpAxis02Global.var</Object>
     <Object Type="DataObject" Language="Apt">gAxis02a</Object>
-    <Object Type="DataObject" Language="Ax">gAxis02i</Object>
     <Object Type="Program" Language="IEC">_MpAxis02</Object>
     <Object Type="Program" Language="IEC">ncsdcctrl</Object>
   </Objects>
