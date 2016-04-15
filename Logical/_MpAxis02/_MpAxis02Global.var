@@ -1,0 +1,11 @@
+VAR
+	Axis02Par : MpAxisBasicParType; (*mapp Axis 2 parameters*)
+	gAxis02 : ACP10AXIS_typ;
+	gAxis02_DiDoIf : SdcDiDoIf_typ := (0);
+	gAxis02_DrvIf : SdcDrvIf16_typ := (0);
+	gAxis02_EncIf1 : SdcEncIf16_typ := (0);
+	gAxis02_HW : SdcHwCfg_typ := (0);
+	gAxis02_MotorStep0 : INT := 0;
+	MpAxis2AlarmUIConnect : MpAlarmBasicUIConnect20Type; (*Structure contains Alarm, Acknowledge and AddInfo arrays for VC4*)
+	MpAxisBasic_Axis2 : MpAxisBasic; (*mapp Axis component for Axis2*)
+END_VAR

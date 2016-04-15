@@ -2,7 +2,7 @@
 *                    B & R   P O S I T I O N I N G                          *
 *****************************************************************************
 *                                                                           *
-*            Header File for Library NCGLOBAL (Version 2501)                * 
+*            Header File for Library NCGLOBAL (Version 3121)                * 
 *                                                                           *
 **************************** COPYRIGHT (C) **********************************
 *     THIS SOFTWARE IS THE PROPERTY OF B&R AUSTRIA: ALL RIGHTS RESERVED.    *
@@ -183,6 +183,7 @@
  #define nc20KHZ 0U
  #define ncA_LIMIT 20U
  #define ncA_MOVE 10U
+ #define ncABORT_DATA 8U
  #define ncABORT_LINE 4U
  #define ncABOVE_WINDOW 40U
  #define ncABS 1U
@@ -779,7 +780,9 @@
  #define RIO4_2005 4480U
  #define SafeMC_action_GET_CFG_PTR 1U
  #define SafeMC_action_READ_SAFEIN_DATA 3U
+ #define SafeMC_action_READ_SAFEIN_DATA2 5U
  #define SafeMC_action_READ_SAFEOUT_DATA 2U
+ #define SafeMC_action_READ_SAFEOUT_DATA2 4U
 #else
  _IEC_CONST unsigned short BASIS2005 = 1U;
  _IEC_CONST unsigned short FAST_BOOT = 16384U;
@@ -940,6 +943,7 @@
  _IEC_CONST unsigned char nc20KHZ = 0U;
  _IEC_CONST unsigned char ncA_LIMIT = 20U;
  _IEC_CONST unsigned char ncA_MOVE = 10U;
+ _IEC_CONST unsigned char ncABORT_DATA = 8U;
  _IEC_CONST unsigned char ncABORT_LINE = 4U;
  _IEC_CONST unsigned char ncABOVE_WINDOW = 40U;
  _IEC_CONST unsigned char ncABS = 1U;
@@ -1536,7 +1540,9 @@
  _IEC_CONST unsigned short RIO4_2005 = 4480U;
  _IEC_CONST unsigned long SafeMC_action_GET_CFG_PTR = 1U;
  _IEC_CONST unsigned long SafeMC_action_READ_SAFEIN_DATA = 3U;
+ _IEC_CONST unsigned long SafeMC_action_READ_SAFEIN_DATA2 = 5U;
  _IEC_CONST unsigned long SafeMC_action_READ_SAFEOUT_DATA = 2U;
+ _IEC_CONST unsigned long SafeMC_action_READ_SAFEOUT_DATA2 = 4U;
 #endif
 
 

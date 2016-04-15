@@ -2,7 +2,7 @@
 *                    B & R   P O S I T I O N I N G                          *
 *****************************************************************************
 *                                                                           *
-*            Header File for Library ACP10MAN (Version 2501)                * 
+*            Header File for Library ACP10MAN (Version 3121)                * 
 *                                                                           *
 **************************** COPYRIGHT (C) **********************************
 *     THIS SOFTWARE IS THE PROPERTY OF B&R AUSTRIA: ALL RIGHTS RESERVED.    *
@@ -11,7 +11,7 @@
 ****************************************************************************/
 
 #ifndef ACP10MAN_H_VERSION 
-#define ACP10MAN_H_VERSION 0x2501 
+#define ACP10MAN_H_VERSION 0x3121 
 
 #include <ncglobal.h>
 #include <acp10par.h>
@@ -542,11 +542,13 @@ typedef struct ACP10SUCPA_typ {               /* Parameters */
    USINT              orientation;            /* Orientation */
    USINT              operating_point;        /* Operating point */
    REAL               i_max_percent;          /* Maximum percentage for rated current */
-   REAL               v_max_percent;          /* Maximum percentage for speed */
+   REAL               v_max_percent;          /* Maximum percentage for speed limit value */
    DINT               s_max;                  /* Maximum move distance */
    REAL               ds_max;                 /* Maximum lag error */
    REAL               kv_percent;             /* Percentage for proportional amplification */
    UDINT              signal_order;           /* Order of excitation signal */
+   REAL               kv_max;                 /* Maximum proportional amplification */
+   REAL               a;                      /* Acceleration */
 } ACP10SUCPA_typ;
 
 typedef struct ACP10SUCTR_typ {               /* Controller */
@@ -937,7 +939,7 @@ typedef struct ACP10SMCCFGPLCE_typ {          /* SafeMC configuration: Powerlink
 
 typedef struct ACP10SMCCFGOUT_typ {           /* SafeMC configuration: SafeOUT data structure */
    USINT                init_ok;              /* Initialization OK */
-   USINT                reserve1;             /* Reserved */
+   USINT                net_dat_typ;          /* Type of network data */
    UINT                 init_error;           /* Initialization error */
    ACP10SMCCFGOUTDA_typ data;                 /* Data */
    UINT                 data_len;             /* Data length */
@@ -953,7 +955,7 @@ typedef struct ACP10SMCCFGINDA_typ {          /* SafeMC configuration: SafeIN da
 
 typedef struct ACP10SMCCFGIN_typ {            /* SafeMC configuration: SafeIN data structure */
    USINT               init_ok;               /* Initialization OK */
-   USINT               reserve1;              /* Reserved */
+   USINT               net_dat_typ;           /* Type of network data */
    UINT                init_error;            /* Initialization error */
    ACP10SMCCFGINDA_typ data;                  /* Data */
    UINT                data_len;              /* Data length */
@@ -995,7 +997,7 @@ typedef struct ACP10SAFEINDAT_typ {           /* SafeMC: SafeIN data */
    USINT              NotErrENC;              /* Encoder error status bit */
    USINT              NotErrFUNC;             /* Functional Fail Safe status bit */
    USINT              SafetyActiveSBT;        /* SBT is active */
-   USINT              SafetyStatusSBT;        /* SBT status Bit */
+   USINT              SafetyStatusSBT;        /* SBT status bit */
    USINT              RSPValid;               /* RSP Valid bit */
    USINT              ReqHomingOK;            /* Request Homing OK bit */
    USINT              reserved_stat_b28;      /* reserved_stat_b28 */
@@ -1007,6 +1009,45 @@ typedef struct ACP10SAFEINDAT_typ {           /* SafeMC: SafeIN data */
    USINT              reserve2;               /* Reserved */
    DINT               SafePosition;           /* Safe position */
 } ACP10SAFEINDAT_typ;
+
+typedef struct ACP10SAFEINDAT2_typ {          /* SafeMC: SafeIN data2 */
+   USINT              NotErrFUNC;             /* Functional Fail Safe status bit */
+   USINT              Operational;            /* Function block is in state operational */
+   USINT              SafetyActiveSTO;        /* STO status bit */
+   USINT              SafetyActiveSBC;        /* SBC status bit */
+   USINT              SafetyActiveSS1;        /* SS1 status bit */
+   USINT              NotErrENC;              /* Encoder error status bit */
+   USINT              SafetyActiveSTO1;       /* STO1 status bit */
+   USINT              SafetyActiveSDC;        /* Deceleration monitoring status bit */
+   USINT              SafetyActiveSOS;        /* SOS status bit */
+   USINT              SafetyActiveSS2;        /* SS2 status bit */
+   USINT              SafetyActiveSLA;        /* SLA status bit */
+   USINT              SafetyActiveSLS1;       /* SLS1 status bit */
+   USINT              SafetyActiveSLS2;       /* SLS2 status bit */
+   USINT              reserved_stat_b13;      /* reserved_stat_b13 */
+   USINT              SafetyActiveSLS3;       /* SLS3 status bit */
+   USINT              SafetyActiveSLS4;       /* SLS4 status bit */
+   USINT              SafetyActiveSDIpos;     /* SDIpos status bit */
+   USINT              SafetyActiveSDIneg;     /* SDIneg status bit */
+   USINT              SafetyActiveSLI;        /* SLI status bit */
+   USINT              SafetyActiveSBT;        /* SBT is active */
+   USINT              SafetyStatusSBT;        /* SBT status bit */
+   USINT              reserved_stat_b21;      /* reserved_stat_b21 */
+   USINT              StatusSFR;              /* At least one safety function is requested */
+   USINT              AllReqFuncAct;          /* All requested safety functions are active */
+   USINT              NotErrENC2;             /* Encoder error status bit2 */
+   USINT              SafePositionValid;      /* SafePosition is valid */
+   USINT              ReqHomingOK;            /* Request Homing OK bit */
+   USINT              SafetyActiveSLP;        /* SLP status bit */
+   USINT              SafetyActiveSMP;        /* SMP status bit */
+   USINT              reserved_stat_b29;      /* reserved_stat_b29 */
+   USINT              RSPValid;               /* RSP Valid bit */
+   USINT              StatusSetPosAlive;      /* Setposition is tested */
+   DINT               SafePosition;           /* Safe position */
+   INT                ScaledSpeed;            /* Scaled safe speed */
+   UINT               reserve1;               /* Reserved */
+   UDINT              reserve2;               /* Reserved */
+} ACP10SAFEINDAT2_typ;
 
 typedef struct ACP10SAFEOUTDAT_typ {          /* SafeMC: SafeOUT data */
    USINT              RequestSTO;             /* STO control bit */
@@ -1025,7 +1066,7 @@ typedef struct ACP10SAFEOUTDAT_typ {          /* SafeMC: SafeOUT data */
    USINT              RequestSLP;             /* SLP control bit */
    USINT              RequestHoming;          /* Homing control bit */
    USINT              RequestSwitch;          /* Switch control bit */
-   USINT              RequestSBT;             /* SBT control Bit */
+   USINT              RequestSBT;             /* SBT control bit */
    USINT              RequestSLA;             /* SLA control bit */
    USINT              SwitchHomingMode;       /* Switch Homing Mode bit */
    USINT              reserved_ctrl_b19;      /* reserved_ctrl_b19 */
@@ -1034,6 +1075,41 @@ typedef struct ACP10SAFEOUTDAT_typ {          /* SafeMC: SafeOUT data */
    USINT              Activate;               /* Activation of SafeMC module */
    USINT              Reset;                  /* Reset bit */
 } ACP10SAFEOUTDAT_typ;
+
+typedef struct ACP10SAFEOUTDAT2_typ {         /* SafeMC: SafeOUT data2 */
+   USINT              Reset;                  /* Reset */
+   USINT              Activate;               /* Activation of SafeMC module */
+   USINT              RequestSTO;             /* STO control bit */
+   USINT              RequestSBC;             /* SBC control bit */
+   USINT              RequestSS1;             /* SS1 control bit */
+   USINT              reserved_ctrl_b5;       /* reserved_ctrl_b5 */
+   USINT              RequestSTO1;            /* STO1 control bit */
+   USINT              reserved_ctrl_b7;       /* reserved_ctrl_b7 */
+   USINT              RequestSOS;             /* SOS control bit */
+   USINT              RequestSS2;             /* SS2 control bit */
+   USINT              RequestSLA;             /* SLA control bit */
+   USINT              RequestSLS1;            /* SLS1 control bit */
+   USINT              RequestSLS2;            /* SLS2 control bit */
+   USINT              reserved_ctrl_b13;      /* reserved_ctrl_b13 */
+   USINT              RequestSLS3;            /* SLS3 control bit */
+   USINT              RequestSLS4;            /* SLS4 control bit */
+   USINT              RequestSDIpos;          /* SDI control bit (positive direction) */
+   USINT              RequestSDIneg;          /* SDI control bit (negative direction) */
+   USINT              RequestSLI;             /* SLI control bit */
+   USINT              RequestSBT;             /* SBT control bit */
+   USINT              reserved_ctrl_b20;      /* reserved_ctrl_b20 */
+   USINT              reserved_ctrl_b21;      /* reserved_ctrl_b21 */
+   USINT              reserved_ctrl_b22;      /* reserved_ctrl_b22 */
+   USINT              reserved_ctrl_b23;      /* reserved_ctrl_b23 */
+   USINT              reserved_ctrl_b24;      /* reserved_ctrl_b24 */
+   USINT              RequestHoming;          /* Homing control bit */
+   USINT              RequestSwitch;          /* Switch control bit */
+   USINT              RequestSLP;             /* SLP control bit */
+   USINT              reserved_ctrl_b28;      /* reserved_ctrl_b28 */
+   USINT              reserved_ctrl_b29;      /* reserved_ctrl_b29 */
+   USINT              SwitchHomingMode;       /* Switch Homing Mode bit */
+   USINT              reserved_ctrl_b31;      /* reserved_ctrl_b31 */
+} ACP10SAFEOUTDAT2_typ;
 
 typedef struct ACP10APNWCST_typ {             /* Status */
    USINT              ok;                     /* Operation complete */
@@ -1085,17 +1161,19 @@ typedef struct ACP10_HWINFO_typ {             /* ACOPOS Hardware Information */
 } ACP10_HWINFO_typ;
 
 typedef struct ACP10TYPES_typ {               /* Data structure for additional data types */
-   ACP10DATBL_typ      data_block;            /* Data block operation */
-   ACP10PRECS_typ      par_recs;              /* Parameter records */
-   ACP10UCROP_typ      read_cob_op;           /* Operate Read COB */
-   ACP10NETGL_typ      network;               /* Network */
-   ACP10DATMO_typ      nc_dat_mod;            /* NC data module */
-   ACP10SMCCFG_typ     SafeMC_CFG;            /* SafeMC Configuration */
-   ACP10SAFEINDAT_typ  SafeMC_SafeIN;         /* SafeMC SafeIN data structure */
-   ACP10SAFEOUTDAT_typ SafeMC_SafeOUT;        /* SafeMC SafeOUT data structure */
-   ACP10APNWC_typ      acp_nw_coupling;       /* ACOPOS Network Coupling */
-   USINT               NOT_USE_1[24];
-   ACP10_HWINFO_typ    acp_hw_info;           /* ACOPOS hardware information */
+   ACP10DATBL_typ       data_block;           /* Data block operation */
+   ACP10PRECS_typ       par_recs;             /* Parameter records */
+   ACP10UCROP_typ       read_cob_op;          /* Operate Read COB */
+   ACP10NETGL_typ       network;              /* Network */
+   ACP10DATMO_typ       nc_dat_mod;           /* NC data module */
+   ACP10SMCCFG_typ      SafeMC_CFG;           /* SafeMC Configuration */
+   ACP10SAFEINDAT_typ   SafeMC_SafeIN;        /* SafeMC SafeIN data structure */
+   ACP10SAFEINDAT2_typ  SafeMC_SafeIN2;       /* SafeMC SafeIN2 data structure */
+   ACP10SAFEOUTDAT_typ  SafeMC_SafeOUT;       /* SafeMC SafeOUT data structure */
+   ACP10SAFEOUTDAT2_typ SafeMC_SafeOUT2;      /* SafeMC SafeOUT2 data structure */
+   ACP10APNWC_typ       acp_nw_coupling;      /* ACOPOS Network Coupling */
+   USINT                NOT_USE_1[24];
+   ACP10_HWINFO_typ     acp_hw_info;          /* ACOPOS hardware information */
 } ACP10TYPES_typ;
 
 typedef struct ACP10USBID_typ {               /* Basis CAN IDs for User CAN Objects */

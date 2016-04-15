@@ -158,6 +158,7 @@ VAR CONSTANT
     nc20KHZ                            :USINT    := 0;            (* 20 kHz *)
     ncA_LIMIT                          :USINT    := 20;           (* With the deceleration defined within the axis limit values *)
     ncA_MOVE                           :USINT    := 10;           (* With the deceleration defined for the current movement *)
+    ncABORT_DATA                       :USINT    := 8;            (* Restart data saved at program abort *)
     ncABORT_LINE                       :USINT    := 4;            (* Position at the beginning of the abort line *)
     ncABOVE_WINDOW                     :USINT    := 40;           (* Area "Above the window" *)
     ncABS                              :USINT    := 1;            (* Absolute *)
@@ -754,5 +755,7 @@ VAR CONSTANT
     RIO4_2005                          :UINT     := 16#1180;      (* Remote I/O in system 2005 (master number 4) *)
     SafeMC_action_GET_CFG_PTR          :UDINT    := 1;            (* SafeMC: Get pointer to configuration *)
     SafeMC_action_READ_SAFEIN_DATA     :UDINT    := 3;            (* SafeMC: Read SafeIN data *)
+    SafeMC_action_READ_SAFEIN_DATA2    :UDINT    := 5;            (* SafeMC: Read SafeIN data2 *)
     SafeMC_action_READ_SAFEOUT_DATA    :UDINT    := 2;            (* SafeMC: Read SafeOUT data *)
+    SafeMC_action_READ_SAFEOUT_DATA2   :UDINT    := 4;            (* SafeMC: Read SafeOUT data2 *)
 END_VAR

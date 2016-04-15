@@ -23,9 +23,6 @@
    23: Encoder3: DCM Distance difference
    24: CTRL Feed forward: Speed torque factor
    25: Power limiter: Mode
-   26: Minimum valid ACOPOS-operationsystem version
-   27: Maximum valid ACOPOS-operationsystem version
-   29: Drive synchronisation: Manipulated variable limit
    30: Motor: Type
    31: Motor: Software compatibility
    32: Motor: Test date
@@ -90,8 +87,6 @@
    91: Encoder1: Actual position
    92: CTRL Position controller: Actual speed
    93: CTRL Controller: Command
-   94: Position for cyclic status
-   95: Speed for cyclic status
    96: Encoder1: Load scaling: Count direction
    97: Encoder1: Type
    98: Limit values: Lag error for stop of a movement
@@ -178,7 +173,6 @@
   179: Status: Cyclic bits
   180: Messages: Error number
   181: Messages: Additional error info
-  182: Error Time
   183: Messages: Error record from drive
   184: Digital inputs: Force enable bits
   185: Digital inputs: Force function
@@ -186,16 +180,12 @@
   187: Processor cycles interrupt SW
   188: Maximum value processor cycles interrupt SW
   189: Time for network live sign control
-  190: Mode for cyclic external set values
   191: Basis movements: Halt
-  192: Cyclic set position
-  193: Cyclic set position fractional part
   194: Cam automat: Reset parameter
   195: VAX Cam automat: Reset parameter
   196: Drive synchronisation: Offset master time
   197: Movement stop: Deceleration ramp after drive error
   198: Cyclic communication: Time for life sign monitoring of data to drive
-  199: Trigger stop mode
   200: System administration: Module: Delete
   201: System administration: Module: Parameter ID
   202: System administration: Module: Command safety code
@@ -204,7 +194,6 @@
   205: Power stage: Phase 1: AD-converter value
   206: Power stage: Phase 2: AD-converter value
   207: Cyclic communication: Parameter ID of data to drive
-  208: Cyclic communication: Offset of data to drive
   209: Power stage: Phase 1: Current 
   210: Power stage: Phase 2: Current 
   211: Motor holding brake: Control monitoring filter time 
@@ -229,7 +218,6 @@
   230: CTRL Position controller: Actual encoder position parameter ID
   231: CTRL Position controller: Parameter ID enable input
   232: Cyclic communication: Parameter index of data to drive
-  233: Cyclic communication: Telegram index of data to drive
   234: Cyclic communication: Index of parameter record for data from drive
   235: Cyclic communication: Parameter index of data from drive
   236: Cyclic communication: Parameter ID of data from drive
@@ -286,14 +274,7 @@
   287: Motor holding brake: Electrical state
   288: CTRL Speed controller: Parameter ID additive set value
   289: Encoder2: Encoder scaling: Increments per encoder revolution
-  290: Broadcast CAN ID for SYNC telegram
-  291: Broadcast CAN ID for broadcast command
   292: Function block: Constant zero
-  293: Basis CAN ID for cyclic user telegram to the drive
-  294: Basis CAN ID for cyclic user telegram from the drive
-  295: Basis CAN ID for write and read channel2
-  296: Basis CAN ID for write and read channel3
-  297: Command: CAN ID standard setting
   298: CTRL DC bus: Voltage
   299: CTRL DC bus: Filter time constant
   300: CTRL DC bus: Voltage detection: Lower limit
@@ -301,7 +282,7 @@
   302: CTRL DC bus: Filtered voltage
   303: Encoder1: ADC1 value
   304: Error state of vector controller
-  305: CTRL Chopper: Manipulated variable
+  305: CTRL Chopper: PWM duty cycle
   307: Maximum motor rotation speed
   308: Maximum stator leakance current component (limitation: IS_MAX)
   309: SafeMC: Actual position
@@ -311,7 +292,6 @@
   313: CTRL Speed controller: Monitoring: Speed limit
   314: CTRL Chopper: Minimum pwm duty cycle
   315: Power stage: Junction temperature model: Power loss
-  316: Command: Switch on/off speed controller
   317: Command: Switch on/off stator voltage rotating field controller
   318: Command: Switch on/off stator current rotating field controller
   319: Command: Switch on/off Set value generator for subordinate controllers
@@ -324,9 +304,6 @@
   326: Amplitude of stator leakance current for square-wave signal generator
   327: Offset of stator leakance current for square-wave signal generator
   328: CTRL Controller: Mode
-  329: CTRL Speed controller: Set speed
-  330: Amplitude of rotation speed for square-wave signal generator
-  331: Offset of rotation speed for square-wave signal generator
   332: Turn-on time (maximum amplitude of square-wave pulse)
   333: Turn-off time (minimum amplitude of square-wave pulse)
   334: Motor: Phasing: Command
@@ -334,9 +311,7 @@
   336: Encoder1: Error state
   337: Encoder2: Error state
   338: Encoder3: Error state
-  339: CTRL Speed controller: Standardized set speed
   340: Messages: Command write error state into error FIFO
-  341: CTRL Speed controller: Factor for standardized set speed
   342: Motor: Temperature model: Load
   343: CTRL Torque limiter: Override
   344: CTRL Torque limiter: LIM_T1_POS override
@@ -351,14 +326,11 @@
   353: Power stage: Overcurrent GND: Counter
   354: Slippage angular velocity
   355: Drive synchronisation: Total time
-  356: Drive synchronisation: Master
-  357: Drive synchronisation: Master cycle time
   358: Digital IO: Status
   359: Drive synchronisation: Deviation from master time
   360: Digital IO: Configuration
   361: Command: Digital output set
   362: Command: Digital output clear
-  363: Period of sync telegram
   364: Testvariable 
   365: Power stage: Heatsink temperature sensor: AD-converter value
   366: Temperature sensor: AD-converter value
@@ -419,39 +391,11 @@
   421: Encoder2: Load scaling: Encoder revolutions
   422: Encoder2: Load scaling: Count direction
   423: Encoder2: Actual position
-  424: Encoder2: Reference position
-  425: Encoder2: Control bits for homing mode
-  426: Encoder2: Command start homing procedure
   427: Encoder2: Status home position valid
   428: CTRL Position controller: Input set position
   429: Encoder2: Time constant for actual position filter
-  430: Command: Start cam profile linkage
-  431: Cam profile: Master axis
   432: Cam automat: Index and data of polynomial cam profile
-  433: Cam profile: Maximum speed of master axis
-  434: Cam profile: Start position of the master axis
-  435: Cam profile: Synchronous distance of master axis
-  436: Cam profile: Compensation distance of master axis
-  437: Cam profile: Trigger mode of master axis
-  438: Cam profile: Trigger distance of master axis
-  439: Cam profile: Synchronous distance of slave axis
-  440: Cam profile: Compensation distance of slave axis
-  441: Cam profile: Trigger distance of slave axis
-  442: Cam profile: Trigger mode of slave axis
-  443: Cam profile: Minimum compensation distance of slave axis
-  444: Cam profile: Maximum compensation distance of slave axis
-  445: Cam profile: Compensation gears type
-  446: Cam profile: Trigger window of slave axis
-  447: Cam profile: Status for drumsequencer enable
-  448: Cam profile: Compensation trigger mode of master axis
-  449: Cam profile: Distance compensation trigger of master axis
-  450: CTRL Position controller: Mode switch
   451: Trace: Address for test date
-  452: Actual position rising edge trigger1
-  453: Actual position falling edge trigger1
-  454: Actual position rising edge trigger2
-  455: Actual position falling edge trigger2
-  456: Cam profile: Compensation trigger window of master axis
   457: Cyclic communication: Mode
   458: Trace: Address for trigger event
   459: Digital inputs: Ignore limit switch
@@ -467,33 +411,11 @@
   469: Messages: Status error record available
   470: Messages: Status warning record available
   471: Status: Drive ready
-  472: Command: Start/stop drumsequencer
-  473: Drumsequencer: Master axis
-  474: Drumsequencer: ID for online change of start position
-  475: Drumsequencer: Start position
-  476: Drumsequencer: Interval
-  477: Drumsequencer: Index of parameter record for one track
-  478: Drumsequencer: Number of digital output
-  479: Drumsequencer: Enable ID
-  480: Drumsequencer: Delay time to switch
-  481: Drumsequencer: Index of parameter record for one cam
-  482: Drumsequencer: Position within interval for output ON
-  483: Drumsequencer: Position within interval for output OFF
   484: Network coupling: Parameter ID of send data master1
   485: Network coupling: Parameter ID of send data master2
-  486: Cam profile: Min. compensation trigger interval of master axis
-  487: Cam profile: Max. compensation trigger interval of master axis
-  488: Cam profile: Min. trigger interval of slave axis
-  489: Cam profile: Max. trigger interval of slave axis
-  490: Cam profile: Trigger delay time slave axis
-  491: Command: Switch controller on/off with active cam profile
-  492: Cam profile: Additive element of master axis
-  493: Cam profile: Trigger window of master axis
   494: Network coupling: Parameter ID of send data master3
   495: Cam automat: Index for start state
   496: VAX Cam automat: Index for start state
-  497: Parameter1 for cyclic status
-  498: Parameter2 for cyclic status
   499: Internal test parameter for development
   500: Cam automat: Cam profile polynomial data
   501: Cam automat: Index of cam profile data for Upload/Download
@@ -520,29 +442,12 @@
   522: Cam automat: Count of state repetitions for event ncCOUNT
   523: Cam automat: Minimum compensation distance of master axis
   524: Movement stop: Command quickstop
-  525: Bits in cyclic status for external set value mode
-  526: Homing: Offset for actual position
   527: Cam automat: Lock for consistent online parameter change
   528: Cam automat: Action at state transition
   529: Cam automat: Cam type of the actual state
-  530: Latch1: Trigger event
-  531: Latch1: Parameter ID of value to latch
-  532: Latch1: Window
-  533: Latch1: Position of window and activation
-  534: Latch1: Result value
-  535: Latch1: Status
-  536: Latch2: Trigger event
-  537: Latch2: Parameter ID of value to latch
-  538: Latch2: Window
-  539: Latch2: Position of window and activation
-  540: Latch2: Result value
-  541: Latch2: Status
   542: Network coupling: Cyclic position master1
   543: Network coupling: Cyclic position master2
   544: Parameter sequence: Index and data
-  545: Cam profile: Enable movement
-  546: Cam profile: Transition to standstill and inhibit movement
-  547: Cam profile: Index of the actual state
   548: Network coupling: Cyclic position master3
   549: Cam automat: Relative start distance of master axis within cam profile
   550: VAX Cam automat: Relative start distance of master axis within cam profile
@@ -585,16 +490,11 @@
   587: Function block: User R4 variable2
   588: Cam automat: Trigger1 delay time
   589: Cam automat: Trigger2 delay time
-  590: Cam automat: Switch controller on/off with active cam automat
   591: Network coupling: Station number of sender
   592: Network coupling: Master Parameter ID of sender station
   593: Network coupling: Configure station to receive on MA1_CYCLIC_POS
   594: Network coupling: Configure station to receive on MA2_CYCLIC_POS
   595: Network coupling: Configure station to receive on MA3_CYCLIC_POS
-  596: Parameter scaling: Input parameter ID
-  597: Parameter scaling: Offset
-  598: Parameter scaling: Factor
-  599: Parameter scaling: Output value (I2 format)
   600: Deceleration for positive SW end position
   601: Deceleration for negative SW end position
   602: Network coupling: Interpolation mode for cyclic position master1
@@ -610,10 +510,6 @@
   612: VAX Cam automat: Parameter ID for event
   613: Cam automat: Minimum speed of slave axis within compensation gears
   614: VAX Cam automat: Minimum speed of slave axis within compensation gears
-  615: Cyclic external set values: Parameter ID additive set position
-  616: Positive end switch
-  617: Negative end switch
-  618: Command: Set node number
   619: Cam automat: Cam offset of master axis
   620: Cam automat: Cam offset of slave axis
   621: VAX Cam automat: Cam offset of master axis
@@ -624,7 +520,6 @@
   626: Network coupling: Multiplication factor of cycle time
   627: Cam automat: State transition count
   628: VAX Cam automat: State transition count
-  629: VAX: Configuration
   630: VAX Messages: Error number
   631: VAX Messages: Additional error info
   632: VAX Messages: Error record
@@ -640,9 +535,6 @@
   642: VAX Basis movements: Start movement with cyclic speed set values
   643: Basis movements: Parameter ID for cyclic set speed
   644: VAX Basis movements: Parameter ID for cyclic set speed
-  645: Network receive error counter
-  646: Network transmit error counter
-  647: Network stabilization time
   648: NCMAN: Test index
   649: NCMAN: Test I4
   650: NCMAN: Test R4
@@ -699,9 +591,6 @@
   702: Encoder3: SSI Parity check
   703: Encoder3: Encoder scaling: Increments per encoder revolution
   704: Encoder3: Type
-  705: Encoder3: Reference position
-  706: Encoder3: Control bits for homing mode
-  707: Encoder3: Command start homing procedure
   708: Encoder3: Time constant for actual position filter
   709: Encoder3: Status home position valid
   710: Encoder3: Filtered actual position
@@ -747,17 +636,11 @@
   750: Parameter sequence: Data
   751: Parameter sequence: Index for Upload/Download
   752: Parameter sequence: Initialize parameter
-  753: Cam profile: Clear trigger FIFO values at restart
-  754: Cam profile: Set position
   755: Encoder1: Time constant for actual position filter
   756: Encoder1: Filtered actual position
   757: Drive synchronisation: Total time within the position controller cycle
-  758: Drumsequencer: Lock for consistent online parameter change
-  759: Lock for consistent online parameter change
   760: Cam automat: Event status bits
   761: VAX Cam automat: Event status bits
-  762: Messages: Error number for configuration
-  763: Messages: Activate configuration error number
   764: Cam automat: Maximum speed of slave axis within compensation gears
   765: VAX Cam automat: Maximum speed of slave axis within compensation gears
   766: Cam automat: Maximum acceleration of slave axis within compensation phase1
@@ -779,8 +662,6 @@
   782: VAX Basis movements: Override
   783: VAX Basis movements: Speed override
   784: VAX Basis movements: Acceleration override
-  785: Drumsequencer: Delay time to switch output ON
-  786: Drumsequencer: Delay time to switch output OFF
   787: Cyclic communication: Parameter index of monitor data from drive
   788: Cyclic communication: Parameter ID of monitor data from drive
   789: Time of rising edge trigger1
@@ -791,7 +672,6 @@
   794: Digital inputs: Status enable
   795: Cam automat: Parameter ID for multiplication factor of slave axis
   796: VAX Cam automat: Parameter ID for multiplication factor of slave axis
-  797: Interpolation mode for cyclic external set value mode
   798: Cam automat: Control bits for message mode
   799: VAX Limit values: Ignore SW end positions
   800: Limit values: Minimum time for 'controller active' after movement stop
@@ -1093,7 +973,7 @@
  1099: System variable9
  1100: Trace: Data
  1101: Autotuning: Maximum percentage for rated current
- 1102: Autotuning: Maximum percentage for speed
+ 1102: Autotuning: Maximum percentage for speed limit value
  1103: Autotuning: Maximum movement distance
  1104: Autotuning: Maximum lag error
  1105: Autotuning: Step
@@ -1110,8 +990,8 @@
  1116: Autotuning: Delay time during transients
  1117: Signal generator: Start frequency of chirp signal
  1118: Signal generator: Stop frequency of chirp signal
- 1119: RESERVED1119
- 1120: RESERVED1120
+ 1119: Autotuning: Maximum proportional amplification
+ 1120: Autotuning: Acceleration
  1121: RESERVED1121
  1122: RESERVED1122
  1123: RESERVED1123
@@ -1186,15 +1066,10 @@
  1192: Encoder3: SSI Number of trailing bits
  1193: Digital inputs: Quickstop deceleration ramp
  1194: Drive synchronisation: Total time within the network cycle
- 1195: System administration: Maximum length of acyclic data
  1196: CTRL Position controller: Mode bits
  1197: Axis crosslink: Axis number
  1198: Axis crosslink: Parameter ID
  1199: Movement stop: Jolt time
- 1200: Broadcast request for cyclic status
- 1201: Latch command drive synchronization
- 1202: Time stamp for drive synchronization
- 1203: Cyclic status bits for external set value generator
  1204: Cam automat: Index for relative start position of the master axis within interval
  1205: Cam automat: Relative start position of the master axis within interval
  1206: VAX Cam automat: Index for relative start position of the master axis within interval
@@ -1379,9 +1254,6 @@
  1390: Encoder1: Baud rate
  1391: Encoder2: Baud rate
  1392: Encoder3: Baud rate
- 1393: Status: module acceleration in direction x
- 1394: Status: module acceleration in direction y
- 1395: Status: module acceleration in direction z
  1396: modul monitor data upload
  1397: RESERVED1397
  1398: RESERVED1398
@@ -1523,9 +1395,27 @@
  1540: Power stage: Main relay: Temperature
  1541: Pitch error-backlash compensation: Maximal speed of flange change
  1542: Pitch error-backlash compensation: Status
- 1544: DC bus: Capacitor: Temperature
- 1545: DC bus: Continuous total power: Load
- 1546: DC bus: Peak total power: Load
+ 1543: Power stage: DC bus connector: Temperature
+ 1544: Power stage: Capacitor: Temperature
+ 1545: Power stage: Continuous total power: Load
+ 1546: Power stage: Peak total power: Load
+ 1547: Motor: Data for hardware information
+ 1548: 24 VDC supply: Filtered Voltage
+ 1549: Basis movements: Target position difference for mode 'stop after trigger'
+ 1550: Junction temperature model: Maximum temperature difference
+ 1551: Virtual Encoder: Limit for position lag error
+ 1552: Virtual Encoder: Limit for speed lag error
+ 1553: Virtual Encoder: Current scale factor
+ 1554: Temperature sensor: Motor connection: Resistance
+ 1555: Temperature sensor: Plugin module: Resistance
+ 1556: Encoder1: Supply voltage
+ 1557: CTRL DC bus: Controller: Command
+ 1558: Power stage: Total power
+ 1559: Power stage: Continuous total power: Limit power
+ 1560: Power stage: Peak total power: Limit power
+ 1561: Power stage: Capacitor: Low frequent Current
+ 1562: Power stage: Capacitor: Pulse frequent Current
+ 1563: Power stage: DC bus connector: Current
  3072: FB LOGIC: Mode
  3080: FB LOGIC: Parameter ID of input1
  3088: FB LOGIC: Parameter ID of input2
@@ -1693,6 +1583,8 @@
  8360: FB CURVE: Maximum acceleration of slave axis within compensation phase2
  8368: FB CURVE: Compensation gears command status
  8376: FB CURVE: Compensation gears command result
+ 8384: FB CURVE: Additive input value
+ 8392: FB CURVE: Additive output value
  8704: FB IPL: Mode
  8712: FB IPL: Parameter ID of input
  8720: FB IPL: Cycle time
@@ -1936,6 +1828,164 @@
 14480: FB DYNSYS: System state 4
 14488: FB DYNSYS: System state 5
 14496: FB DYNSYS: Status
+63488: LLM: ADC configuration
+63489: LLM: active phases mapped on axis
+63490: LLM: number of phases (coils) on the segment
+63491: LLM: measured balancer current
+63492: LLM: DC-Bus: middle voltage
+63493: LLM: Balancer: command
+63494: LLM: Balancer: proportional amplification
+63495: LLM: Balancer: integrator action time
+63496: LLM: Balancer: status
+63501: LLM: measured phase current 1
+63502: LLM: measured phase current 2
+63503: LLM: measured phase current 3
+63504: LLM: measured phase current 4
+63505: LLM: measured phase current 5
+63506: LLM: measured phase current 6
+63507: LLM: measured phase current 7
+63508: LLM: measured phase current 8
+63509: LLM: measured phase current 9
+63510: LLM: measured phase current 10
+63511: LLM: measured phase current 11
+63512: LLM: measured phase current 12
+63513: LLM: measured phase current 13
+63514: LLM: measured phase current 14
+63515: LLM: measured phase current 15
+63516: LLM: measured phase current 16
+63517: LLM: measured phase current 17
+63518: LLM: measured phase current 18
+63519: LLM: measured phase current 19
+63520: LLM: measured phase current 20
+63521: LLM: measured phase current 21
+63522: LLM: measured phase current 22
+63523: LLM: measured phase current 23
+63524: LLM: measured phase current 24
+63525: LLM: measured phase current 25
+63526: LLM: measured phase current 26
+63527: LLM: measured phase current 27
+63528: LLM: measured phase current 28
+63529: LLM: measured phase current 29
+63530: LLM: measured phase current 30
+63531: LLM: measured phase current 31
+63532: LLM: measured phase current 32
+63533: LLM: measured phase current 33
+63534: LLM: measured phase current 34
+63535: LLM: measured phase current 35
+63536: LLM: measured phase current 36
+63537: LLM: measured phase current 37
+63538: LLM: measured phase current 38
+63539: LLM: measured phase current 39
+63540: LLM: measured phase current 40
+63541: LLM: measured phase current 41
+63542: LLM: measured phase current 42
+63543: RESERVED63543
+63544: RESERVED63544
+63545: RESERVED63545
+63546: RESERVED63546
+63547: RESERVED63547
+63548: RESERVED63548
+63549: RESERVED63549
+63550: RESERVED63550
+63551: LLM: reference phase current 1
+63552: LLM: reference phase current 2
+63553: LLM: reference phase current 3
+63554: LLM: reference phase current 4
+63555: LLM: reference phase current 5
+63556: LLM: reference phase current 6
+63557: LLM: reference phase current 7
+63558: LLM: reference phase current 8
+63559: LLM: reference phase current 9
+63560: LLM: reference phase current 10
+63561: LLM: reference phase current 11
+63562: LLM: reference phase current 12
+63563: LLM: reference phase current 13
+63564: LLM: reference phase current 14
+63565: LLM: reference phase current 15
+63566: LLM: reference phase current 16
+63567: LLM: reference phase current 17
+63568: LLM: reference phase current 18
+63569: LLM: reference phase current 19
+63570: LLM: reference phase current 20
+63571: LLM: reference phase current 21
+63572: LLM: reference phase current 22
+63573: LLM: reference phase current 23
+63574: LLM: reference phase current 24
+63575: LLM: reference phase current 25
+63576: LLM: reference phase current 26
+63577: LLM: reference phase current 27
+63578: LLM: reference phase current 28
+63579: LLM: reference phase current 29
+63580: LLM: reference phase current 30
+63581: LLM: reference phase current 31
+63582: LLM: reference phase current 32
+63583: LLM: reference phase current 33
+63584: LLM: reference phase current 34
+63585: LLM: reference phase current 35
+63586: LLM: reference phase current 36
+63587: LLM: reference phase current 37
+63588: LLM: reference phase current 38
+63589: LLM: reference phase current 39
+63590: LLM: reference phase current 40
+63591: LLM: reference phase current 41
+63592: LLM: reference phase current 42
+63593: RESERVED63593
+63594: RESERVED63594
+63595: RESERVED63595
+63596: RESERVED63596
+63597: RESERVED63597
+63598: RESERVED63598
+63599: RESERVED63599
+63600: RESERVED63600
+63601: LLM: reference phase voltage 1
+63602: LLM: reference phase voltage 2
+63603: LLM: reference phase voltage 3
+63604: LLM: reference phase voltage 4
+63605: LLM: reference phase voltage 5
+63606: LLM: reference phase voltage 6
+63607: LLM: reference phase voltage 7
+63608: LLM: reference phase voltage 8
+63609: LLM: reference phase voltage 9
+63610: LLM: reference phase voltage 10
+63611: LLM: reference phase voltage 11
+63612: LLM: reference phase voltage 12
+63613: LLM: reference phase voltage 13
+63614: LLM: reference phase voltage 14
+63615: LLM: reference phase voltage 15
+63616: LLM: reference phase voltage 16
+63617: LLM: reference phase voltage 17
+63618: LLM: reference phase voltage 18
+63619: LLM: reference phase voltage 19
+63620: LLM: reference phase voltage 20
+63621: LLM: reference phase voltage 21
+63622: LLM: reference phase voltage 22
+63623: LLM: reference phase voltage 23
+63624: LLM: reference phase voltage 24
+63625: LLM: reference phase voltage 25
+63626: LLM: reference phase voltage 26
+63627: LLM: reference phase voltage 27
+63628: LLM: reference phase voltage 28
+63629: LLM: reference phase voltage 29
+63630: LLM: reference phase voltage 30
+63631: LLM: reference phase voltage 31
+63632: LLM: reference phase voltage 32
+63633: LLM: reference phase voltage 33
+63634: LLM: reference phase voltage 34
+63635: LLM: reference phase voltage 35
+63636: LLM: reference phase voltage 36
+63637: LLM: reference phase voltage 37
+63638: LLM: reference phase voltage 38
+63639: LLM: reference phase voltage 39
+63640: LLM: reference phase voltage 40
+63641: LLM: reference phase voltage 41
+63642: LLM: reference phase voltage 42
+63643: RESERVED63643
+63644: RESERVED63644
+63645: RESERVED63645
+63646: RESERVED63646
+63647: RESERVED63647
+63648: RESERVED63648
+63649: RESERVED63649
 64201: Servo drive adjustment: Velocity at maximum output value
 64225: Encoder1: Range of encoder position
 64232: Stepper motor: Step scaling: Steps per motor revolution

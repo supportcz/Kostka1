@@ -2,7 +2,7 @@
 *                    B & R   P O S I T I O N I N G                          *
 *****************************************************************************
 *                                                                           *
-*            Header File for Library ACP10PAR (Version 2501)                * 
+*            Header File for Library ACP10PAR (Version 3121)                * 
 *                                                                           *
 **************************** COPYRIGHT (C) **********************************
 *     THIS SOFTWARE IS THE PROPERTY OF B&R AUSTRIA: ALL RIGHTS RESERVED.    *
@@ -96,8 +96,6 @@
 #define ACP10PAR_ENCOD1_S_ACT                91 /* (DINT) Encoder1: Actual position [Units] */
 #define ACP10PAR_PCTRL_V_ACT                 92 /* (REAL) CTRL Position controller: Actual speed [Units/s] */
 #define ACP10PAR_CMD_CONTROLLER              93 /* (UINT) CTRL Controller: Command */
-#define ACP10PAR_STATUS_CYCLIC_S             94 /* (DINT) Position for cyclic status [Units] */
-#define ACP10PAR_STATUS_CYCLIC_V             95 /* (REAL) Speed for cyclic status [Units/s] */
 #define ACP10PAR_ENCOD_COUNT_DIR             96 /* (USINT) Encoder1: Load scaling: Count direction */
 #define ACP10PAR_ENCOD_TYPE                  97 /* (USINT) Encoder1: Type */
 #define ACP10PAR_AXLIM_DS_STOP               98 /* (REAL) Limit values: Lag error for stop of a movement [Units] */
@@ -147,6 +145,8 @@
 #define ACP10PAR_TRACE_T_DELAY              143 /* (REAL) Trace: Delay time relative to trigger event [s] */
 #define ACP10PAR_TRACE_MAX_DATLEN           144 /* (UDINT) Trace: Maximum length of data [Byte] */
 #define ACP10PAR_CTRL_CYCLE_TIME_MODE       145 /* (USINT) CTRL Controller: Mode of controller cascade cycle times */
+#define ACP10PAR_PCTRL_CYC_SET_PARID        146 /* (UINT) CTRL Position controller: Parameter ID for cyclic set position */
+#define ACP10PAR_CMD_PCTRL_CYC_SET          147 /* (UINT) CTRL Position controller: Start movement with cyclic position set values */
 #define ACP10PAR_AXLIM_T_INPOS              150 /* (REAL) Limit values: Waiting time before message 'target position reached' [s] */
 #define ACP10PAR_HOMING_TR_S_REL            151 /* (REAL) Homing: Reference pulse distance [Rev.] */
 #define ACP10PAR_HOMING_S                   152 /* (DINT) Homing: Reference position [Units] */
@@ -178,24 +178,19 @@
 #define ACP10PAR_STATUS_CYCLIC_BITS         179 /* (UDINT) Status: Cyclic bits */
 #define ACP10PAR_ERROR_NUMBER               180 /* (UINT) Messages: Error number */
 #define ACP10PAR_ERROR_INFO                 181 /* (DINT) Messages: Additional error info */
-#define ACP10PAR_ERROR_TIME                 182 /* (UDINT) Error Time [us] */
 #define ACP10PAR_ERROR_REC                  183 /* (ERROR_NUMBER, ERROR_INFO) Messages: Error record from drive */
 #define ACP10PAR_DIG_IN_FORCE_ENABLE        184 /* (USINT) Digital inputs: Force enable bits */
 #define ACP10PAR_CMD_DIG_IN_FORCE           185 /* (USINT) Digital inputs: Force function */
 #define ACP10PAR_DIG_IN_ACTIVE_LEVEL        186 /* (USINT) Digital inputs: Active level bits */
 #define ACP10PAR_NETWORK_LIVE_CTRL          189 /* (UDINT) Time for network live sign control [us] */
-#define ACP10PAR_CMD_CYC_SET_VALUE_MODE     190 /* (UINT) Mode for cyclic external set values */
 #define ACP10PAR_CMD_BASIS_MOVE_HALT        191 /* (NIL) Basis movements: Halt */
-#define ACP10PAR_CYC_MASTER_SET_POS         192 /* (DINT) Cyclic set position [Units] */
 #define ACP10PAR_AUT_PAR_RESET              194 /* (USINT) Cam automat: Reset parameter */
 #define ACP10PAR_AUT_PAR_RESET_VAX1         195 /* (USINT) VAX Cam automat: Reset parameter */
 #define ACP10PAR_STOP_ERR_DECEL_RAMP        197 /* (USINT) Movement stop: Deceleration ramp after drive error */
 #define ACP10PAR_CYCLIC_TODRV_T_CTRL        198 /* (DINT) Cyclic communication: Time for life sign monitoring of data to drive [us] */
-#define ACP10PAR_TRIGGER_STOP_MODE          199 /* (USINT) Trigger stop mode */
 #define ACP10PAR_ENCOD_POLEPAIRS            203 /* (USINT) Encoder1: Resolver polepairs per encoder revolution */
 #define ACP10PAR_ENCOD2_POLEPAIRS           204 /* (USINT) Encoder2: Resolver polepairs per encoder revolution */
 #define ACP10PAR_CYCLIC_TODRV_PARID         207 /* (UINT) Cyclic communication: Parameter ID of data to drive */
-#define ACP10PAR_CYCLIC_TODRV_OFFSET        208 /* (UINT) Cyclic communication: Offset of data to drive */
 #define ACP10PAR_VCTRL_I1                   209 /* (REAL) Power stage: Phase 1: Current  [A] */
 #define ACP10PAR_VCTRL_I2                   210 /* (REAL) Power stage: Phase 2: Current  [A] */
 #define ACP10PAR_BRAKE_CTRL_MON_FILTER      211 /* (REAL) Motor holding brake: Control monitoring filter time  [s] */
@@ -215,7 +210,6 @@
 #define ACP10PAR_PCTRL_S_ACT_PARID          230 /* (UINT) CTRL Position controller: Actual encoder position parameter ID */
 #define ACP10PAR_PCTRL_ENABLE_PARID         231 /* (UINT) CTRL Position controller: Parameter ID enable input */
 #define ACP10PAR_CYCLIC_TODRV_PAR_INDEX     232 /* (USINT) Cyclic communication: Parameter index of data to drive */
-#define ACP10PAR_CYCLIC_TODRV_TEL_INDEX     233 /* (USINT) Cyclic communication: Telegram index of data to drive */
 #define ACP10PAR_CYCLIC_FRDRV_REC_INDEX     234 /* (USINT) Cyclic communication: Index of parameter record for data from drive */
 #define ACP10PAR_CYCLIC_FRDRV_PAR_INDEX     235 /* (USINT) Cyclic communication: Parameter index of data from drive */
 #define ACP10PAR_CYCLIC_FRDRV_PARID         236 /* (UINT) Cyclic communication: Parameter ID of data from drive */
@@ -257,14 +251,7 @@
 #define ACP10PAR_STAT_BRAKE_CIRCUIT         287 /* (UDINT) Motor holding brake: Electrical state */
 #define ACP10PAR_SCTRL_ADD_SET_PARID        288 /* (UINT) CTRL Speed controller: Parameter ID additive set value */
 #define ACP10PAR_SCALE_ENCOD2_INCR          289 /* (UDINT) Encoder2: Encoder scaling: Increments per encoder revolution */
-#define ACP10PAR_BRC_CANID_DRV_SYNC         290 /* (UINT) Broadcast CAN ID for SYNC telegram */
-#define ACP10PAR_BRC_CANID_BRC_CMD          291 /* (UINT) Broadcast CAN ID for broadcast command */
 #define ACP10PAR_CONST_I4_ZERO              292 /* (DINT) Function block: Constant zero */
-#define ACP10PAR_BASIS_CANID_USCYC_TODRV    293 /* (UINT) Basis CAN ID for cyclic user telegram to the drive */
-#define ACP10PAR_BASIS_CANID_USCYC_FRDRV    294 /* (UINT) Basis CAN ID for cyclic user telegram from the drive */
-#define ACP10PAR_BASIS_CANID_WR_RD_2        295 /* (UINT) Basis CAN ID for write and read channel2 */
-#define ACP10PAR_BASIS_CANID_WR_RD_3        296 /* (UINT) Basis CAN ID for write and read channel3 */
-#define ACP10PAR_CMD_CANID_ACOPOS_STD       297 /* (NIL) Command: CAN ID standard setting */
 #define ACP10PAR_UDC_ACT                    298 /* (REAL) CTRL DC bus: Voltage [V] */
 #define ACP10PAR_UDC_CTRL_TI_FIL            299 /* (REAL) CTRL DC bus: Filter time constant [s] */
 #define ACP10PAR_UDC_DETECTION              300 /* (REAL) CTRL DC bus: Voltage detection: Lower limit [V] */
@@ -281,14 +268,11 @@
 #define ACP10PAR_BRAKE_TEST_POS_DELTA       323 /* (REAL) Motor holding brake: Maximal position error [Rev.] */
 #define ACP10PAR_ICTRL_ADD_SET_PARID        325 /* (UINT) CTRL Current controller: Additive set value parameter ID */
 #define ACP10PAR_CONTROLLER_MODE            328 /* (USINT) CTRL Controller: Mode */
-#define ACP10PAR_SCTRL_V_SET_UNITS          329 /* (REAL) CTRL Speed controller: Set speed [Units/s] */
 #define ACP10PAR_CMD_PHASING                334 /* (UINT) Motor: Phasing: Command */
 #define ACP10PAR_ENCOD_ERROR_STATE          336 /* (USINT) Encoder1: Error state */
 #define ACP10PAR_ENCOD2_ERROR_STATE         337 /* (USINT) Encoder2: Error state */
 #define ACP10PAR_ENCOD3_ERROR_STATE         338 /* (USINT) Encoder3: Error state */
-#define ACP10PAR_SCTRL_V_SET_SCALE          339 /* (INT) CTRL Speed controller: Standardized set speed */
 #define ACP10PAR_CMD_ERR_STATE_INTO_FIFO    340 /* (NIL) Messages: Command write error state into error FIFO */
-#define ACP10PAR_SCTRL_K_V_SET_SCALE        341 /* (REAL) CTRL Speed controller: Factor for standardized set speed */
 #define ACP10PAR_LOAD_MOTOR_MODEL           342 /* (REAL) Motor: Temperature model: Load [%] */
 #define ACP10PAR_LIM_T_OVR_GRP              343 /* (LIM_T1_POS_OVR, LIM_T1_NEG_OVR, LIM_T2_POS_OVR, LIM_T2_NEG_OVR) CTRL Torque limiter: Override */
 #define ACP10PAR_LIM_T1_POS_OVR             344 /* (USINT) CTRL Torque limiter: LIM_T1_POS override [%] */
@@ -301,14 +285,11 @@
 #define ACP10PAR_ERRESP_UDC_POWERFAIL       351 /* (UDINT) Power mains: Error response */
 #define ACP10PAR_LOAD_MOTOR_MODEL_MAX       352 /* (REAL) Motor: Temperature model: Maximum load [%] */
 #define ACP10PAR_SYS_TIME                   355 /* (UDINT) Drive synchronisation: Total time [us] */
-#define ACP10PAR_SYNC_MASTERDRIVE           356 /* (BOOL) Drive synchronisation: Master */
-#define ACP10PAR_SYNC_MASTERPERIOD          357 /* (UDINT) Drive synchronisation: Master cycle time [us] */
 #define ACP10PAR_DIO_STATE                  358 /* (UDINT) Digital IO: Status */
 #define ACP10PAR_SYNC_SYS_TIME_DIFF         359 /* (DINT) Drive synchronisation: Deviation from master time */
 #define ACP10PAR_DIO_CONFIG                 360 /* (UDINT) Digital IO: Configuration */
 #define ACP10PAR_CMD_DO_SET                 361 /* (UDINT) Command: Digital output set */
 #define ACP10PAR_CMD_DO_CLR                 362 /* (UDINT) Command: Digital output clear */
-#define ACP10PAR_SYNC_MSG_PERIOD            363 /* (UDINT) Period of sync telegram [us] */
 #define ACP10PAR_STAT_UDC_POWERFAIL         367 /* (UDINT) Power mains: Status */
 #define ACP10PAR_UVLIM_MODE                 368 /* (UDINT) CTRL DC bus: Limiter: Mode */
 #define ACP10PAR_ENCOD_REF_PULSE_STATUS     369 /* (USINT) Encoder1: INC Reference pulse state */
@@ -361,39 +342,11 @@
 #define ACP10PAR_SCALE_ENCOD2_REV           421 /* (UDINT) Encoder2: Load scaling: Encoder revolutions */
 #define ACP10PAR_ENCOD2_COUNT_DIR           422 /* (USINT) Encoder2: Load scaling: Count direction */
 #define ACP10PAR_ENCOD2_S_ACT               423 /* (DINT) Encoder2: Actual position [Units] */
-#define ACP10PAR_ENCOD2_HOMING_S            424 /* (DINT) Encoder2: Reference position [Units] */
-#define ACP10PAR_ENCOD2_HOMING_MODE_BITS    425 /* (USINT) Encoder2: Control bits for homing mode */
-#define ACP10PAR_CMD_ENCOD2_HOMING          426 /* (ENCOD2_HOMING_S, ENCOD2_HOMING_MODE_BITS) Encoder2: Command start homing procedure */
 #define ACP10PAR_STAT_ENC2_HOMING_OK        427 /* (UDINT) Encoder2: Status home position valid */
 #define ACP10PAR_SGEN_S_SET                 428 /* (DINT) CTRL Position controller: Input set position [Units] */
 #define ACP10PAR_ENCOD2_S_FILTER_T10        429 /* (REAL) Encoder2: Time constant for actual position filter [s] */
-#define ACP10PAR_CMD_CAM_START              430 /* (UINT) Command: Start cam profile linkage */
-#define ACP10PAR_CAM_MA_AXIS                431 /* (UINT) Cam profile: Master axis */
 #define ACP10PAR_AUT_INDEX_DATA             432 /* (AUT_DATA_INDEX, AUT_POLY_DATA) Cam automat: Index and data of polynomial cam profile */
-#define ACP10PAR_CAM_MA_V_MAX               433 /* (REAL) Cam profile: Maximum speed of master axis [Units/s] */
-#define ACP10PAR_CAM_MA_S_START             434 /* (DINT) Cam profile: Start position of the master axis [Units] */
-#define ACP10PAR_CAM_MA_S_SYNC              435 /* (DINT) Cam profile: Synchronous distance of master axis [Units] */
-#define ACP10PAR_CAM_MA_S_COMP              436 /* (DINT) Cam profile: Compensation distance of master axis [Units] */
-#define ACP10PAR_CAM_MA_TRIG_MODE           437 /* (USINT) Cam profile: Trigger mode of master axis */
-#define ACP10PAR_CAM_MA_S_TRIG              438 /* (DINT) Cam profile: Trigger distance of master axis [Units] */
-#define ACP10PAR_CAM_SL_S_SYNC              439 /* (DINT) Cam profile: Synchronous distance of slave axis [Units] */
-#define ACP10PAR_CAM_SL_S_COMP              440 /* (DINT) Cam profile: Compensation distance of slave axis [Units] */
-#define ACP10PAR_CAM_SL_S_TRIG              441 /* (DINT) Cam profile: Trigger distance of slave axis [Units] */
-#define ACP10PAR_CAM_SL_TRIG_MODE           442 /* (USINT) Cam profile: Trigger mode of slave axis */
-#define ACP10PAR_CAM_SL_S_COMP_MIN          443 /* (DINT) Cam profile: Minimum compensation distance of slave axis [Units] */
-#define ACP10PAR_CAM_SL_S_COMP_MAX          444 /* (DINT) Cam profile: Maximum compensation distance of slave axis [Units] */
-#define ACP10PAR_CAM_COMP_GEAR_TYPE         445 /* (USINT) Cam profile: Compensation gears type */
-#define ACP10PAR_CAM_SL_TRIG_WINDOW         446 /* (DINT) Cam profile: Trigger window of slave axis [Units] */
-#define ACP10PAR_CAM_DRUMSEQ_ENABLE         447 /* (BOOL) Cam profile: Status for drumsequencer enable */
-#define ACP10PAR_CAM_MA_COMP_TRIG_MODE      448 /* (USINT) Cam profile: Compensation trigger mode of master axis */
-#define ACP10PAR_CAM_MA_S_COMP_TRIG         449 /* (DINT) Cam profile: Distance compensation trigger of master axis [Units] */
-#define ACP10PAR_PCTRL_MODE_SWITCH          450 /* (DINT) CTRL Position controller: Mode switch */
 #define ACP10PAR_TRACE_TEST_ADDR            451 /* (DINT) Trace: Address for test date */
-#define ACP10PAR_TRIG1_RISE_EDGE_S_ACT      452 /* (DINT) Actual position rising edge trigger1 [Units] */
-#define ACP10PAR_TRIG1_FALL_EDGE_S_ACT      453 /* (DINT) Actual position falling edge trigger1 [Units] */
-#define ACP10PAR_TRIG2_RISE_EDGE_S_ACT      454 /* (DINT) Actual position rising edge trigger2 [Units] */
-#define ACP10PAR_TRIG2_FALL_EDGE_S_ACT      455 /* (DINT) Actual position falling edge trigger2 [Units] */
-#define ACP10PAR_CAM_MA_COMP_TRIG_WINDOW    456 /* (DINT) Cam profile: Compensation trigger window of master axis [Units] */
 #define ACP10PAR_CYCLIC_TOFRDRV_MODE        457 /* (USINT) Cyclic communication: Mode */
 #define ACP10PAR_TRACE_TRIGGER_ADDR         458 /* (DINT) Trace: Address for trigger event */
 #define ACP10PAR_LIMIT_SWITCH_IGNORE        459 /* (BOOL) Digital inputs: Ignore limit switch */
@@ -409,33 +362,11 @@
 #define ACP10PAR_STAT_ERROR_NOT_READ        469 /* (UDINT) Messages: Status error record available */
 #define ACP10PAR_STAT_WARNING_NOT_READ      470 /* (UDINT) Messages: Status warning record available */
 #define ACP10PAR_STAT_DRIVE_READY           471 /* (UDINT) Status: Drive ready */
-#define ACP10PAR_CMD_DRUMSEQ                472 /* (UINT) Command: Start/stop drumsequencer */
-#define ACP10PAR_DRUMSEQ_MA_AXIS            473 /* (UINT) Drumsequencer: Master axis */
-#define ACP10PAR_DRUMSEQ_S_START_ID         474 /* (UINT) Drumsequencer: ID for online change of start position [Units] */
-#define ACP10PAR_DRUMSEQ_S_START            475 /* (DINT) Drumsequencer: Start position [Units] */
-#define ACP10PAR_DRUMSEQ_S_IV               476 /* (DINT) Drumsequencer: Interval [Units] */
-#define ACP10PAR_DRUMSEQ_TRACK_INDEX        477 /* (UINT) Drumsequencer: Index of parameter record for one track */
-#define ACP10PAR_DRUMSEQ_DO_CHAN            478 /* (UINT) Drumsequencer: Number of digital output */
-#define ACP10PAR_DRUMSEQ_TRACK_ENABLE_ID    479 /* (UINT) Drumsequencer: Enable ID */
-#define ACP10PAR_DRUMSEQ_DO_DELAY           480 /* (REAL) Drumsequencer: Delay time to switch [s] */
-#define ACP10PAR_DRUMSEQ_CAM_INDEX          481 /* (UINT) Drumsequencer: Index of parameter record for one cam */
-#define ACP10PAR_DRUMSEQ_S_DO_ON            482 /* (DINT) Drumsequencer: Position within interval for output ON [Units] */
-#define ACP10PAR_DRUMSEQ_S_DO_OFF           483 /* (DINT) Drumsequencer: Position within interval for output OFF [Units] */
 #define ACP10PAR_MA1_CYCLIC_SEND            484 /* (UINT) Network coupling: Parameter ID of send data master1 */
 #define ACP10PAR_MA2_CYCLIC_SEND            485 /* (UINT) Network coupling: Parameter ID of send data master2 */
-#define ACP10PAR_CAM_MA_COMP_TRIG_IV_MIN    486 /* (DINT) Cam profile: Min. compensation trigger interval of master axis [Units] */
-#define ACP10PAR_CAM_MA_COMP_TRIG_IV_MAX    487 /* (DINT) Cam profile: Max. compensation trigger interval of master axis [Units] */
-#define ACP10PAR_CAM_SL_TRIG_IV_MIN         488 /* (DINT) Cam profile: Min. trigger interval of slave axis [Units] */
-#define ACP10PAR_CAM_SL_TRIG_IV_MAX         489 /* (DINT) Cam profile: Max. trigger interval of slave axis [Units] */
-#define ACP10PAR_CAM_SL_TRIG_T_DELAY        490 /* (DINT) Cam profile: Trigger delay time slave axis [us] */
-#define ACP10PAR_CMD_CAM_CONTROLLER         491 /* (UINT) Command: Switch controller on/off with active cam profile */
-#define ACP10PAR_CAM_MA_ADD_EL              492 /* (DINT) Cam profile: Additive element of master axis [Units] */
-#define ACP10PAR_CAM_MA_TRIG_WINDOW         493 /* (DINT) Cam profile: Trigger window of master axis [Units] */
 #define ACP10PAR_MA3_CYCLIC_SEND            494 /* (UINT) Network coupling: Parameter ID of send data master3 */
 #define ACP10PAR_AUT_START_ST_INDEX         495 /* (USINT) Cam automat: Index for start state */
 #define ACP10PAR_AUT_START_ST_INDEX_VAX1    496 /* (USINT) VAX Cam automat: Index for start state */
-#define ACP10PAR_CYCL_MON_REQU1             497 /* (UINT) Parameter1 for cyclic status */
-#define ACP10PAR_CYCL_MON_REQU2             498 /* (UINT) Parameter2 for cyclic status */
 #define ACP10PAR_AUT_POLY_DATA              500 /* (DATA) Cam automat: Cam profile polynomial data */
 #define ACP10PAR_AUT_DATA_INDEX             501 /* (UINT) Cam automat: Index of cam profile data for Upload/Download */
 #define ACP10PAR_CMD_AUT_START              502 /* (UINT) Cam automat: Command */
@@ -461,29 +392,12 @@
 #define ACP10PAR_AUT_ST_COUNT_SET           522 /* (UINT) Cam automat: Count of state repetitions for event ncCOUNT */
 #define ACP10PAR_AUT_COMP_MA_S_MIN          523 /* (DINT) Cam automat: Minimum compensation distance of master axis [Units] */
 #define ACP10PAR_CMD_QUICKSTOP              524 /* (NIL) Movement stop: Command quickstop */
-#define ACP10PAR_EXTSET_CYC_STAT_BITS       525 /* (UINT) Bits in cyclic status for external set value mode */
-#define ACP10PAR_OFFSET_ACT_POS             526 /* (DINT) Homing: Offset for actual position [Units] */
 #define ACP10PAR_AUT_ONL_PAR_LOCK           527 /* (USINT) Cam automat: Lock for consistent online parameter change */
 #define ACP10PAR_AUT_EVENT_ACTION           528 /* (UDINT) Cam automat: Action at state transition */
 #define ACP10PAR_AUT_ACT_CAM_TYPE           529 /* (USINT) Cam automat: Cam type of the actual state */
-#define ACP10PAR_LATCH1_EVENT               530 /* (USINT) Latch1: Trigger event */
-#define ACP10PAR_LATCH1_VALUE_PARID         531 /* (UINT) Latch1: Parameter ID of value to latch */
-#define ACP10PAR_LATCH1_WINDOW              532 /* (DINT) Latch1: Window */
-#define ACP10PAR_LATCH1_WINDOW_POS          533 /* (DINT) Latch1: Position of window and activation */
-#define ACP10PAR_LATCH1_VALUE               534 /* (DINT) Latch1: Result value */
-#define ACP10PAR_LATCH1_STATUS              535 /* (USINT) Latch1: Status */
-#define ACP10PAR_LATCH2_EVENT               536 /* (USINT) Latch2: Trigger event */
-#define ACP10PAR_LATCH2_VALUE_PARID         537 /* (UINT) Latch2: Parameter ID of value to latch */
-#define ACP10PAR_LATCH2_WINDOW              538 /* (DINT) Latch2: Window */
-#define ACP10PAR_LATCH2_WINDOW_POS          539 /* (DINT) Latch2: Position of window and activation */
-#define ACP10PAR_LATCH2_VALUE               540 /* (DINT) Latch2: Result value */
-#define ACP10PAR_LATCH2_STATUS              541 /* (USINT) Latch2: Status */
 #define ACP10PAR_MA1_CYCLIC_POS             542 /* (DINT) Network coupling: Cyclic position master1 */
 #define ACP10PAR_MA2_CYCLIC_POS             543 /* (DINT) Network coupling: Cyclic position master2 */
 #define ACP10PAR_PAR_SEQU_INDEX_DATA        544 /* (PAR_SEQU_INDEX, PAR_SEQU) Parameter sequence: Index and data */
-#define ACP10PAR_CAM_INHIBIT_OFF            545 /* (DINT) Cam profile: Enable movement [Units] */
-#define ACP10PAR_CAM_INHIBIT_ON             546 /* (DINT) Cam profile: Transition to standstill and inhibit movement [Units] */
-#define ACP10PAR_CAM_ACT_ST_INDEX           547 /* (USINT) Cam profile: Index of the actual state */
 #define ACP10PAR_MA3_CYCLIC_POS             548 /* (DINT) Network coupling: Cyclic position master3 */
 #define ACP10PAR_AUT_CAM_MA_S_REL           549 /* (DINT) Cam automat: Relative start distance of master axis within cam profile [Units] */
 #define ACP10PAR_AUT_CAM_MA_S_REL_VAX1      550 /* (DINT) VAX Cam automat: Relative start distance of master axis within cam profile [Units] */
@@ -526,16 +440,11 @@
 #define ACP10PAR_USER_R4_VAR2               587 /* (REAL) Function block: User R4 variable2 */
 #define ACP10PAR_AUT_TRIG1_T_DELAY          588 /* (DINT) Cam automat: Trigger1 delay time [us] */
 #define ACP10PAR_AUT_TRIG2_T_DELAY          589 /* (DINT) Cam automat: Trigger2 delay time [us] */
-#define ACP10PAR_CMD_AUT_CONTROLLER         590 /* (UINT) Cam automat: Switch controller on/off with active cam automat */
 #define ACP10PAR_STATION_NUMBER_CYCLIC      591 /* (UINT) Network coupling: Station number of sender */
 #define ACP10PAR_MA_PARID_CYCLIC_POS        592 /* (UINT) Network coupling: Master Parameter ID of sender station */
 #define ACP10PAR_CONFIG_MA1_CYCLIC_POS      593 /* (STATION_NUMBER_CYCLIC, MA_PARID_CYCLIC_POS) Network coupling: Configure station to receive on MA1_CYCLIC_POS */
 #define ACP10PAR_CONFIG_MA2_CYCLIC_POS      594 /* (STATION_NUMBER_CYCLIC, MA_PARID_CYCLIC_POS) Network coupling: Configure station to receive on MA2_CYCLIC_POS */
 #define ACP10PAR_CONFIG_MA3_CYCLIC_POS      595 /* (STATION_NUMBER_CYCLIC, MA_PARID_CYCLIC_POS) Network coupling: Configure station to receive on MA3_CYCLIC_POS */
-#define ACP10PAR_SCALE_R4_PARID             596 /* (UINT) Parameter scaling: Input parameter ID */
-#define ACP10PAR_SCALE_R4_OFFSET            597 /* (REAL) Parameter scaling: Offset */
-#define ACP10PAR_SCALE_R4_FACTOR            598 /* (REAL) Parameter scaling: Factor */
-#define ACP10PAR_SCALE_R4_TO_I2             599 /* (INT) Parameter scaling: Output value (I2 format) */
 #define ACP10PAR_SW_END_A2_POS              600 /* (REAL) Deceleration for positive SW end position [Units/s²] */
 #define ACP10PAR_SW_END_A2_NEG              601 /* (REAL) Deceleration for negative SW end position [Units/s²] */
 #define ACP10PAR_MA1_CYCLIC_IPL_MODE        602 /* (USINT) Network coupling: Interpolation mode for cyclic position master1 */
@@ -551,9 +460,6 @@
 #define ACP10PAR_AUT_EVENT_ID_VAX1          612 /* (UINT) VAX Cam automat: Parameter ID for event */
 #define ACP10PAR_AUT_COMP_SL_V_MIN          613 /* (REAL) Cam automat: Minimum speed of slave axis within compensation gears [Units/s] */
 #define ACP10PAR_AUT_COMP_SL_V_MIN_VAX1     614 /* (REAL) VAX Cam automat: Minimum speed of slave axis within compensation gears [Units/s] */
-#define ACP10PAR_CYC_ADD_SET_PARID          615 /* (UINT) Cyclic external set values: Parameter ID additive set position */
-#define ACP10PAR_POS_LIMIT_SWITCH_HW        616 /* (UDINT) Positive end switch */
-#define ACP10PAR_NEG_LIMIT_SWITCH_HW        617 /* (UDINT) Negative end switch */
 #define ACP10PAR_AUT_MA_CAM_OFFSET          619 /* (DINT) Cam automat: Cam offset of master axis [Units] */
 #define ACP10PAR_AUT_SL_CAM_OFFSET          620 /* (DINT) Cam automat: Cam offset of slave axis [Units] */
 #define ACP10PAR_AUT_MA_CAM_OFFSET_VAX1     621 /* (DINT) VAX Cam automat: Cam offset of master axis [Units] */
@@ -564,7 +470,6 @@
 #define ACP10PAR_MA_CYCLE_TIME_FACTOR       626 /* (UDINT) Network coupling: Multiplication factor of cycle time */
 #define ACP10PAR_AUT_ST_EV_COUNT            627 /* (UDINT) Cam automat: State transition count */
 #define ACP10PAR_AUT_ST_EV_COUNT_VAX1       628 /* (UDINT) VAX Cam automat: State transition count */
-#define ACP10PAR_CONFIG_VAX1                629 /* (USINT) VAX: Configuration */
 #define ACP10PAR_ERROR_NUMBER_VAX1          630 /* (UINT) VAX Messages: Error number */
 #define ACP10PAR_ERROR_INFO_VAX1            631 /* (DINT) VAX Messages: Additional error info */
 #define ACP10PAR_ERROR_REC_VAX1             632 /* (ERROR_NUMBER_VAX1, ERROR_INFO_VAX1) VAX Messages: Error record */
@@ -630,9 +535,6 @@
 #define ACP10PAR_ENCOD3_SSI_PARITY_CHK      702 /* (USINT) Encoder3: SSI Parity check */
 #define ACP10PAR_SCALE_ENCOD3_INCR          703 /* (UDINT) Encoder3: Encoder scaling: Increments per encoder revolution */
 #define ACP10PAR_ENCOD3_TYPE                704 /* (USINT) Encoder3: Type */
-#define ACP10PAR_ENCOD3_HOMING_S            705 /* (DINT) Encoder3: Reference position [Units] */
-#define ACP10PAR_ENCOD3_HOMING_MODE_BITS    706 /* (USINT) Encoder3: Control bits for homing mode */
-#define ACP10PAR_CMD_ENCOD3_HOMING          707 /* (ENCOD3_HOMING_S, ENCOD3_HOMING_MODE_BITS) Encoder3: Command start homing procedure */
 #define ACP10PAR_ENCOD3_S_FILTER_T10        708 /* (REAL) Encoder3: Time constant for actual position filter [s] */
 #define ACP10PAR_STAT_ENC3_HOMING_OK        709 /* (UDINT) Encoder3: Status home position valid */
 #define ACP10PAR_ENCOD3_S_ACT_FILTER        710 /* (DINT) Encoder3: Filtered actual position [Units] */
@@ -676,17 +578,11 @@
 #define ACP10PAR_PAR_SEQU                   750 /* (DATA) Parameter sequence: Data */
 #define ACP10PAR_PAR_SEQU_INDEX             751 /* (UINT) Parameter sequence: Index for Upload/Download */
 #define ACP10PAR_CMD_PAR_SEQU_INIT          752 /* (UINT) Parameter sequence: Initialize parameter */
-#define ACP10PAR_CAM_CLEAR_TRIG_FIFO        753 /* (USINT) Cam profile: Clear trigger FIFO values at restart */
-#define ACP10PAR_CAM_S_SET                  754 /* (DINT) Cam profile: Set position [Units] */
 #define ACP10PAR_ENCOD1_S_FILTER_T10        755 /* (REAL) Encoder1: Time constant for actual position filter [s] */
 #define ACP10PAR_ENCOD1_S_ACT_FILTER        756 /* (DINT) Encoder1: Filtered actual position [Units] */
 #define ACP10PAR_PCTRL_SYS_TIME             757 /* (UDINT) Drive synchronisation: Total time within the position controller cycle [us] */
-#define ACP10PAR_DRUMSEQ_ONL_PAR_LOCK       758 /* (USINT) Drumsequencer: Lock for consistent online parameter change */
-#define ACP10PAR_ONL_PAR_LOCK               759 /* (DRUMSEQ_ONL_PAR_LOCK, AUT_ONL_PAR_LOCK, AUT_ONL_PAR_LOCK_VAX1) Lock for consistent online parameter change */
 #define ACP10PAR_AUT_EV_STATUS_BITS         760 /* (UDINT) Cam automat: Event status bits */
 #define ACP10PAR_AUT_EV_STATUS_BITS_VAX1    761 /* (UDINT) VAX Cam automat: Event status bits */
-#define ACP10PAR_MSG_CONF_ERROR_NUMBER      762 /* (UINT) Messages: Error number for configuration */
-#define ACP10PAR_MSG_CONF_ACTIVATE_ERROR    763 /* (USINT) Messages: Activate configuration error number */
 #define ACP10PAR_AUT_COMP_SL_V_MAX          764 /* (REAL) Cam automat: Maximum speed of slave axis within compensation gears [Units/s] */
 #define ACP10PAR_AUT_COMP_SL_V_MAX_VAX1     765 /* (REAL) VAX Cam automat: Maximum speed of slave axis within compensation gears [Units/s] */
 #define ACP10PAR_AUT_COMP_SL_A1_MAX         766 /* (REAL) Cam automat: Maximum acceleration of slave axis within compensation phase1 [Units/s²] */
@@ -708,8 +604,6 @@
 #define ACP10PAR_OVERRIDE_VAX1              782 /* (V_OVERRIDE_VAX1, A_OVERRIDE_VAX1) VAX Basis movements: Override */
 #define ACP10PAR_V_OVERRIDE_VAX1            783 /* (INT) VAX Basis movements: Speed override */
 #define ACP10PAR_A_OVERRIDE_VAX1            784 /* (INT) VAX Basis movements: Acceleration override */
-#define ACP10PAR_DRUMSEQ_DO_DELAY_ON        785 /* (REAL) Drumsequencer: Delay time to switch output ON [s] */
-#define ACP10PAR_DRUMSEQ_DO_DELAY_OFF       786 /* (REAL) Drumsequencer: Delay time to switch output OFF [s] */
 #define ACP10PAR_CYCLIC_MON_PAR_INDEX       787 /* (USINT) Cyclic communication: Parameter index of monitor data from drive */
 #define ACP10PAR_CYCLIC_MON_PARID           788 /* (UINT) Cyclic communication: Parameter ID of monitor data from drive */
 #define ACP10PAR_TRIG1_RISE_EDGE_TIME       789 /* (UDINT) Time of rising edge trigger1 [us] */
@@ -719,7 +613,6 @@
 #define ACP10PAR_STAT_ENABLE                794 /* (UDINT) Digital inputs: Status enable */
 #define ACP10PAR_AUT_SL_FACTOR_ID           795 /* (UINT) Cam automat: Parameter ID for multiplication factor of slave axis */
 #define ACP10PAR_AUT_SL_FACTOR_ID_VAX1      796 /* (UINT) VAX Cam automat: Parameter ID for multiplication factor of slave axis */
-#define ACP10PAR_CYC_EXTSET_IPL_MODE        797 /* (USINT) Interpolation mode for cyclic external set value mode */
 #define ACP10PAR_AUT_MSG_MODE_BITS          798 /* (UDINT) Cam automat: Control bits for message mode */
 #define ACP10PAR_SGEN_SW_END_IGNORE_VAX1    799 /* (USINT) VAX Limit values: Ignore SW end positions */
 #define ACP10PAR_AXLIM_T_CTRL_STOP_END      800 /* (REAL) Limit values: Minimum time for 'controller active' after movement stop [s] */
@@ -962,7 +855,7 @@
 #define ACP10PAR_AUT_MSG_MODE_BITS_VAX1    1079 /* (UDINT) VAX Cam automat: Control bits for message mode */
 #define ACP10PAR_TRACE_DATA                1100 /* (DATA) Trace: Data */
 #define ACP10PAR_TUNE_I_MAX_PERCENT        1101 /* (REAL) Autotuning: Maximum percentage for rated current [%] */
-#define ACP10PAR_TUNE_V_MAX_PERCENT        1102 /* (REAL) Autotuning: Maximum percentage for speed [%] */
+#define ACP10PAR_TUNE_V_MAX_PERCENT        1102 /* (REAL) Autotuning: Maximum percentage for speed limit value [%] */
 #define ACP10PAR_TUNE_S_MAX                1103 /* (REAL) Autotuning: Maximum movement distance [Units] */
 #define ACP10PAR_TUNE_DS_MAX               1104 /* (REAL) Autotuning: Maximum lag error [Units] */
 #define ACP10PAR_TUNE_SIGNAL_PERIODS       1106 /* (UDINT) Autotuning: Number of excitation periods */
@@ -974,6 +867,8 @@
 #define ACP10PAR_TUNE_INERTIA_F_LOWER      1114 /* (REAL) Autotuning: Lower frequency for estimation of drive inertia [Hz] */
 #define ACP10PAR_TUNE_INERTIA_F_UPPER      1115 /* (REAL) Autotuning: Upper frequency for estimation of drive inertia [Hz] */
 #define ACP10PAR_TUNE_DELAY_TIME           1116 /* (REAL) Autotuning: Delay time during transients [s] */
+#define ACP10PAR_TUNE_KV_MAX               1119 /* (REAL) Autotuning: Maximum proportional amplification [As, 1/s] */
+#define ACP10PAR_TUNE_A                    1120 /* (REAL) Autotuning: Acceleration [Units/s²] */
 #define ACP10PAR_PIDENT_SUB_MODE           1125 /* (UDINT) Parameter identification: Sub-mode */
 #define ACP10PAR_PIDENT_STATE_BITS         1126 /* (UDINT) Parameter identification: State bits */
 #define ACP10PAR_ISQ_RIPPLE_DAT_A_POS      1127 /* (REAL) ISQ-Ripple compensation: Data: Amplitude for quadrant I [A] */
@@ -1037,14 +932,10 @@
 #define ACP10PAR_ENCOD3_SSI_TRAIL_BITS     1192 /* (USINT) Encoder3: SSI Number of trailing bits */
 #define ACP10PAR_QUICKSTOP_DECEL_RAMP      1193 /* (USINT) Digital inputs: Quickstop deceleration ramp */
 #define ACP10PAR_NETWORK_SYS_TIME          1194 /* (UDINT) Drive synchronisation: Total time within the network cycle [us] */
-#define ACP10PAR_ACYCLIC_MAX_DATLEN        1195 /* (UINT) System administration: Maximum length of acyclic data [Byte] */
 #define ACP10PAR_PCTRL_MODE_BITS           1196 /* (UDINT) CTRL Position controller: Mode bits */
 #define ACP10PAR_CROSSLINK_AXIS            1197 /* (UINT) Axis crosslink: Axis number */
 #define ACP10PAR_CROSSLINK_PARID           1198 /* (UINT) Axis crosslink: Parameter ID */
 #define ACP10PAR_STOP_T_JOLT               1199 /* (REAL) Movement stop: Jolt time [s] */
-#define ACP10PAR_BRC_REQU_CYCLIC_STATUS    1200 /* (UINT) Broadcast request for cyclic status */
-#define ACP10PAR_DRIVE_SYNC_CMD_LATCH      1201 /* (NIL) Latch command drive synchronization */
-#define ACP10PAR_DRIVE_SYNC_TIMESTAMP      1202 /* (BYTES6) Time stamp for drive synchronization */
 #define ACP10PAR_AUT_MA_S_START_IDX        1204 /* (USINT) Cam automat: Index for relative start position of the master axis within interval */
 #define ACP10PAR_AUT_MA_S_START_IV         1205 /* (DINT) Cam automat: Relative start position of the master axis within interval [Units] */
 #define ACP10PAR_AUT_MA_S_START_IDX_VAX1   1206 /* (USINT) VAX Cam automat: Index for relative start position of the master axis within interval */
@@ -1244,6 +1135,7 @@
 #define ACP10PAR_MOTOR_BRAKE_VOLT_REL      1504 /* (REAL) Motor holding brake: Release voltage [V] */
 #define ACP10PAR_MOTOR_BRAKE_VOLT_HOLD     1505 /* (REAL) Motor holding brake: Hold voltage [V] */
 #define ACP10PAR_MOTOR_BRAKE_VOLT_MAX      1506 /* (REAL) Motor holding brake: Overvoltage limit [V] */
+#define ACP10PAR_CROSSLINK_ENC2_S_ACT      1509 /* (UINT) Axis crosslink: Encoder2: Actual position */
 #define ACP10PAR_PBC_MODE                  1510 /* (UINT) Pitch error-backlash compensation: Mode */
 #define ACP10PAR_PBC_TC                    1511 /* (REAL) Pitch error-backlash compensation: Compensation time [s] */
 #define ACP10PAR_PBC_INERTIA1              1512 /* (REAL) Pitch error-backlash compensation: Inertia in backlash [kgm²] */
@@ -1266,6 +1158,16 @@
 #define ACP10PAR_TEMP_MAINRELAY            1540 /* (REAL) Power stage: Main relay: Temperature [°C] */
 #define ACP10PAR_PBC_MAX_RATE              1541 /* (REAL) Pitch error-backlash compensation: Maximal speed of flange change [Units/s] */
 #define ACP10PAR_PBC_STATUS                1542 /* (UINT) Pitch error-backlash compensation: Status */
+#define ACP10PAR_TEMP_CONNECTOR            1543 /* (REAL) Power stage: DC bus connector: Temperature [°C] */
+#define ACP10PAR_TEMP_CAPACITOR            1544 /* (REAL) Power stage: Capacitor: Temperature [°C] */
+#define ACP10PAR_TOTALPOWER_CONT_LOAD      1545 /* (REAL) Power stage: Continuous total power: Load [%] */
+#define ACP10PAR_TOTALPOWER_PEAK_LOAD      1546 /* (REAL) Power stage: Peak total power: Load [%] */
+#define ACP10PAR_MOTOR_HWINFO_DATA         1547 /* (DATA) Motor: Data for hardware information */
+#define ACP10PAR_BASIS_TRG_STOP_S_DIFF     1549 /* (DINT) Basis movements: Target position difference for mode 'stop after trigger' [Units] */
+#define ACP10PAR_ENCOD_SUPPLY_VOLTAGE      1556 /* (REAL) Encoder1: Supply voltage [V] */
+#define ACP10PAR_TOTALPOWER                1558 /* (REAL) Power stage: Total power [W] */
+#define ACP10PAR_TOTALPOWER_CONT_LIM       1559 /* (REAL) Power stage: Continuous total power: Limit power [W] */
+#define ACP10PAR_TOTALPOWER_PEAK_LIM       1560 /* (REAL) Power stage: Peak total power: Limit power [W] */
 #define ACP10PAR_LOGIC_MODE                3072 /* (UINT) FB LOGIC: Mode */
 #define ACP10PAR_LOGIC_IN1_PARID           3080 /* (UINT) FB LOGIC: Parameter ID of input1 */
 #define ACP10PAR_LOGIC_IN2_PARID           3088 /* (UINT) FB LOGIC: Parameter ID of input2 */
@@ -1433,6 +1335,8 @@
 #define ACP10PAR_CURVE_COMP_SL_A2_MAX      8360 /* (REAL) FB CURVE: Maximum acceleration of slave axis within compensation phase2 [Units/s²] */
 #define ACP10PAR_CURVE_COMP_CMD_STATUS     8368 /* (USINT) FB CURVE: Compensation gears command status */
 #define ACP10PAR_CURVE_COMP_RESULT         8376 /* (REAL) FB CURVE: Compensation gears command result */
+#define ACP10PAR_CURVE_X_ADD               8384 /* (DINT) FB CURVE: Additive input value */
+#define ACP10PAR_CURVE_Y_ADD               8392 /* (DINT) FB CURVE: Additive output value */
 #define ACP10PAR_IPL_MODE                  8704 /* (UINT) FB IPL: Mode */
 #define ACP10PAR_IPL_IN_PARID              8712 /* (UINT) FB IPL: Parameter ID of input */
 #define ACP10PAR_IPL_CYCLE_TIME            8720 /* (UDINT) FB IPL: Cycle time [us] */
@@ -1635,7 +1539,7 @@
 #define ACP10PAR_CTRL_IN15_R4             13696 /* (REAL) FB CTRL: Parameter input15 R4 */
 #define ACP10PAR_CTRL_IN16_R4             13704 /* (REAL) FB CTRL: Parameter input16 R4 */
 #define ACP10PAR_CTRL_IN17_R4             13712 /* (REAL) FB CTRL: Parameter input17 R4 */
-#define ACP10PAR_CTRL_IN3_UI4             13720 /* (UINT) FB CTRL: Parameter input3 UI4 */
+#define ACP10PAR_CTRL_IN3_UI4             13720 /* (UDINT) FB CTRL: Parameter input3 UI4 */
 #define ACP10PAR_CTRL_IN18_R4             13728 /* (REAL) FB CTRL: Parameter input18 R4 */
 #define ACP10PAR_CTRL_IN19_R4             13736 /* (REAL) FB CTRL: Parameter input19 R4 */
 #define ACP10PAR_CTRL_IN20_R4             13744 /* (REAL) FB CTRL: Parameter input20 R4 */

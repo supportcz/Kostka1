@@ -1,0 +1,6 @@
+VAR
+	Axis01Par : MpAxisBasicParType; (*mapp Axis 1 parameters*)
+	gAxis01 : ACP10AXIS_typ; (*ACP10 axis*)
+	MpAxis1AlarmUIConnect : MpAlarmBasicUIConnect20Type; (*Structure contains Alarm, Acknowledge and AddInfo arrays for VC4*)
+	MpAxisBasic_Axis1 : MpAxisBasic; (*mapp Axis component for Axis1*)
+END_VAR

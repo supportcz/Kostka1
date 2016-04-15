@@ -1,35 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.1.8.44 SP?>
+<?AutomationStudio Version=4.2.4.149?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
   <Module Name="80SD100XD.C044-01" Type="80SD100XD.C044-01" Version="2.0.0.0">
     <Connection Connector="X2X1" TargetModule="X20BT9100" TargetConnector="X2X1" />
+    <Parameter ID="SM_SCALE_LOAD_UNITS_r1" Value="27300" />
+    <Parameter ID="SM_SCALE_LOAD_MOTREV_r1" Value="5" />
     <Parameter ID="BothEndSwitchesAreNormallyOpen_r1" Value="on" />
     <Parameter ID="QuickStopIsNormallyOpen_r1" Value="on" />
   </Module>
-  <Module Name="80VD100PD.C000-01" Type="80VD100PD.C000-01" Version="1.1.1.1">
-    <Connection Connector="PLK1" TargetModule="X20CP1484" TargetConnector="IF3" NodeNumber="1" />
+  <Module Name="80VD100PD.C000-01" Type="80VD100PD.C000-01" Version="2.0.1.0">
+    <Connection Connector="PLK1" TargetModule="X20CP1584" TargetConnector="IF3" NodeNumber="1" />
     <Parameter ID="BothEndSwitchesAreNormallyOpen_r1" Value="on" />
     <Parameter ID="QuickStopIsNormallyOpen_r1" Value="on" />
   </Module>
   <Module Name="X20BM11" Type="X20BM11" Version="1.0.0.0">
-    <Connection Connector="X2X1" TargetModule="X20CP1484" TargetConnector="IF6" />
+    <Connection Connector="X2X1" TargetModule="X20CP1584" TargetConnector="IF6" />
   </Module>
   <Module Name="X20BT9100" Type="X20BT9100" Version="1.0.2.3">
     <Connection Connector="SS1" TargetModule="X20TB12" TargetConnector="SS" />
     <Connection Connector="SL" TargetModule="X20BM11" TargetConnector="SL1" />
   </Module>
-  <Module Name="X20CP1484" Type="X20CP1484" Version="1.1.4.0">
+  <Module Name="X20CP1584" Type="X20CP1584" Version="1.3.0.0">
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
+      <Parameter ID="EthInterfaceRedundant" Value="0" />
+      <Group ID="Vnc1" />
+      <Parameter ID="VncVcObjectName1" Value="Visu" />
+      <Parameter ID="VncKeyMappingFile1" Value="VC\PS2-Keyboard.dis" />
     </Connector>
     <Connector Name="IF3">
-      <Parameter ID="CycleTime" Value="10000" />
+      <Parameter ID="EplInterfaceRedundant" Value="0" />
       <Parameter ID="EplEthInterfaceRedundant" Value="0" />
     </Connector>
-    <Connector Name="IF6">
-      <Parameter ID="CycleTime" Value="10000" />
-    </Connector>
-    <Parameter ID="Cyclic1Duration" Value="10000" />
+    <Parameter ID="ConfigurationID" Value="Kostka1_Config1" />
+    <Parameter ID="TimerDeviceType" Value="EPLX2X" />
+    <Parameter ID="TaskClassIdleTime" Value="2000" />
+    <Parameter ID="Cyclic1Duration" Value="2000" />
     <Parameter ID="Cyclic1Tolerance" Value="0" />
     <Parameter ID="Cyclic2Duration" Value="20000" />
     <Parameter ID="Cyclic2Tolerance" Value="20000" />
@@ -45,6 +51,7 @@
     <Parameter ID="Cyclic7Tolerance" Value="1000000" />
     <Parameter ID="Cyclic8Duration" Value="10000" />
     <Parameter ID="Cyclic8Tolerance" Value="30000000" />
+    <Parameter ID="TimerDevice" Value="X20CP1584.IF3" />
   </Module>
   <Module Name="X20TB12" Type="X20TB12" Version="1.0.0.0" />
 </Hardware>

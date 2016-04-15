@@ -1,0 +1,4 @@
+VAR
+	MpAlarmBasicUI_Axis1 : MpAlarmBasicUI;
+	MpAlarmBasicUISetupAxis1 : MpAlarmBasicUISetupType;
+END_VAR

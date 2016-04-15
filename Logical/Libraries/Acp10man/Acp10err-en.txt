@@ -51,7 +51,6 @@
  1004: Timeout in network life sign monitor
  1005: Parameter cannot be written while a movement is active
  1006: Invalid parameter for trigger event (digital input + edge)
- 1007: Master for network coupling deactivated - one master is already sending
  1008: Master for network coupling deactivated - Encoder error
        Info(USINT): Sending object number 
  1009: Error during memory allocation
@@ -78,7 +77,6 @@
  1031: Position controller cycle time exceeded - CPU load too high
  1032: Internal bus error
        Info(UDINT): Error code
- 1033: Function is only available for one axis (channel)
  2001: Upload of trace data not allowed: Recording active
  2003: Trace start not allowed: Recording active
  2006: Initialization of trace parameters not allowed: Recording active
@@ -95,6 +93,7 @@
        Info(REAL): Current positions difference
  4015: Error triggered by command
        Info(UINT): Command parameter
+ 4016: Taskclass cycle time invalid
  5001: Target position exceeds positive SW limit
  5002: Target position exceeds negative SW limit
  5003: Positive SW limit reached
@@ -104,7 +103,6 @@
  5010: Move in pos. direction not possible: Pos. limit switch is closed
  5011: Move in neg. direction not possible: Neg. limit switch is closed
  5012: Start of movement not possible: Stop ramp active
- 5013: Cyclic set value mode cannot be switched on: Movement active
  5015: Start of movement not possible: Homing procedure active
  5016: Parameter cannot be written: Homing procedure active
  5017: Homing procedure mode not possible: Position controller inactive
@@ -115,14 +113,11 @@
  5021: Limit switch closed: No direction change for this homing mode
  5022: Second limit switch signal received: Reference switch not found
  5023: Incorrect limit switch signal received for current movement direction
- 5024: Cyclic set value mode aborted: Set positions missing
  5025: Homing offset with counting range correction cannot be set
  5026: Basis movement parameters (with override) exceed speed limit value
  5027: Basis movement parameters (with override) exceed acceleration limit value
  5028: Current movement is not a basis movement
  5029: Trigger ignored - remaining distance exceeds SW limit
- 5030: Homing procedure mode not possible: Position controller active
- 5031: Homing procedure mode not possible: Cyclic set values mode is off
  5032: Acceleration too low - braking distance exceeds positive SW limit
  5033: Acceleration too low - braking distance exceeds negative SW limit
  5034: Homing procedure not possible: Encoder error
@@ -141,23 +136,13 @@
        Info(USINT): State index
  5102: Too many changes of cam profile per cycle (master period too short)
        Info(USINT): State index
- 5103: Slave trigger FIFO full
- 5104: Slave trigger FIFO empty
- 5105: Master trigger FIFO full
- 5106: Master trigger FIFO empty
  5107: Cam coupling cannot be started: Parameter outside the valid range
        Info('PARID'): Parameter ID
- 5108: Master compensation trigger FIFO full
- 5109: Master compensation trigger FIFO empty
  5110: Cam coupling aborted: Cyclic set positions missing
        Info(USINT): State index
  5111: Cam coupling aborted: Encoder error
        Info(USINT): State index
- 5112: Command not allowed: Cam profile coupling not active
- 5113: Command not allowed: Controller is already active
- 5114: Parameter cannot be written: Cam coupling active
  5115: Restart command not possible: The cam automat is not active
- 5201: Parameter cannot be written: Drumsequencer active
  5202: Cam Control: Switch positions not in ascending order
  5300: Data block for upload is not available
  5301: Start cam automat linkage not possible: Parameter outside the valid range
@@ -170,28 +155,19 @@
  5315: Download error: Cam profile data in use by cam automat or function block
  5316: Event type is not possible for entry in compensation gears
  5319: Cam profile data not allowed for state 0
- 5329: No valid cam profile data or state deactivated
+ 5329: No valid cam profile data
  6000: Master sampling time is not a multiple of position controller sampling time
- 6001: Sync controller: Timeout for sync telegram occurred
  6002: Sync controller: Error tolerance of system time difference exceeded
  6008: Controller is already active
- 6011: Controller is not in speed mode
  6014: Drive initialization active
- 6015: CAN controller: CAN bus disturbance (receive error counter greater 96)
-       Info(USINT): Slot
- 6016: CAN controller: CAN bus disturbance (transmit error counter greater 96)
-       Info(USINT): Slot
  6017: Software: Watchdog active
  6018: Hardware: Internal power supply failure
  6019: ACOPOS: Overcurrent
- 6020: Hardware: 24V power supply fail
+ 6020: 24 VDC supply: Undervoltage
  6021: Low level at controller enable input
  6023: Voltage sag at controller enable input
- 6024: Current was latched before conversion (OpSys error in ABLS)
- 6025: Temperature was latched before conversion (OpSys error in ABLS)
  6026: Holding brake: Stator current limit exceeded during release
  6027: Holding brake: Manual operation not permitted
- 6028: Holding brake: Undervoltage/-current (wire breakage, check 24V supply)
  6029: Holding brake: Control signal on and output status off 
  6030: Holding brake: Brake output is active, but no brake entered in motor data
  6031: System module already deleted
@@ -204,9 +180,6 @@
        Info('PARID'): Parameter ID
  6038: Torque limit higher than peak motor torque
        Info(REAL): Peak motor torque
- 6040: Operating system version is less than allowed minimum version
- 6041: Operating system version is greater than allowed maximum version
- 6042: Operating system version is not in the allowed range
  6043: PHASING_MODE is not valid
        Info(UINT): PHASING_MODE
  6044: Phasing: Rotational direction or position not valid
@@ -252,6 +225,8 @@
  6072: Holding brake: High voltage
  6073: Additional control function in error state
        Info(UINT): Error status
+ 6074: 24 VDC supply: Overvoltage
+       Info(REAL): Limit value
  7012: Encoder: Hiperface error bit
        Info(USINT): Slot
  7013: Encoder: Status message
@@ -348,6 +323,12 @@
        Info(USINT): Slot
  7069: Encoder: encoder error filter activ
        Info(USINT): Slot
+ 7070: Encoder: Lag error stop limit exceeded
+       Info(REAL): Current lag error
+ 7071: Encoder: Limit speed error exceeded
+       Info(REAL): Speed error
+ 7072: Encoder: Transfer time position exceeded
+       Info(USINT): Slot
  7100: Parameter function not supported. (Module ?)
  7200: DC bus: Overvoltage
  7210: DC bus: Pre-charging: Voltage unstable 
@@ -377,6 +358,7 @@
        Info(REAL): Limit
  7228: DC bus: Nominal voltage detection: High inrush current
        Info(REAL): Voltage boost factor
+ 7229: Chopper: Overcurrent
  7300: Digital IO: IO Configuration invalid
        Info(UINT): Slot
  7401: Parameter position exceeds maximum data length
@@ -394,6 +376,8 @@
        Info(UINT): EEPROM Parameter ID
  8011: EPROM: Data not valid
  8012: EPROM: Controller-ID not valid
+       Info(USINT): CODE
+ 8013: EPROM: CRC error
        Info(USINT): CODE
  8020: Invalid switch frequency 
  9000: Heatsink temperature sensor: Stop limit exceeded
@@ -486,6 +470,10 @@
        Info(REAL): Load limit
  9103: DC bus: Peak total power: Switch off limit exceeded
        Info(REAL): Load limit
+ 9104: DC connector temperature model: Stop limit exceeded
+       Info(REAL): Temperature
+ 9105: DC connector temperature model: Switch off limit exceeded
+       Info(REAL): Temperature
  9300: Current controller: Overcurrent
        Info(REAL): Limit
  9302: Current controller: Cycle time invalid
@@ -1134,6 +1122,7 @@
        Info(UDINT): Maximum number
 32330: Setup: Data of an ACOPOS parameter longer than 6 bytes
        Info(UINT): Parameter ID
+32397: NCSYS version on the target system is not compatible with NCMAN version
 32398: acp10sys does not contain an operating system for this ACOPOS hardware type
 32399: Manual ACOPOS restart (POWER-OFF/-ON) after NCSYS download necessary
 32400: Memory cannot be allocated
@@ -1242,7 +1231,6 @@
 32765: SDM_Motion_Action: Length of XML input data is zero
 32766: SDM_Motion_Action: Pointer of XML input data is zero
 32767: SDM_Motion_Action: Invalid actionID
-33000: Master cycle time is not a multiple of communication cycle time
 33002: Floating-Point exception
        Info(UDINT): EPC
 33003: Address error exception
@@ -1255,10 +1243,6 @@
        Info(UDINT): EPC
 33007: Violation address
        Info(UDINT): ADDR
-33008: FPGA: CRC error: Address
-       Info(UDINT): ADDR
-33009: FPGA: CRC error: Byte
-       Info(UDINT): Byte
 35000: SMC Fail Safe: Internal error, Program flow
        Info(UDINT): Switch ID
 35001: SMC Fail Safe: Internal error, NULL pointer access
@@ -1575,14 +1559,8 @@
        Info(USINT): State index
 37102: Calculated compensation distance on slave axis limited to minimum
        Info(USINT): State index
-37103: Slave trigger outside of window
-37104: Slave trigger missing
-37105: Master compensation trigger outside of window
-37107: Displacement actual/set position too high during 'controller switch on'
 37108: Calculated compensation distance of master axis limited to minimum
        Info(USINT): State index
-37109: Master trigger outside of window
-37110: Master position at start higher than first trigger position
 37111: Cam profile data: Difference between polynomial value y(xn) and slave period
        Info(REAL): Difference
 37112: Polynomial within cam profile data exceeds limit value
@@ -1600,10 +1578,6 @@
 38007: System administration: BsLoader activ: Jumper plugged
        Info(UINT): BsLoader version
 38008: Bleeder: No current flow
-38100: Memory test: Read error
-       Info(UDINT): ADDR
-38101: Memory test: Write error
-       Info(UDINT): ADDR
 39001: Encoder: Position correction active
        Info(USINT): Slot
 39002: Resolver: Speed limit for 14 bit resolution exceeded
@@ -1780,7 +1754,6 @@
        Info(USINT): Slot
 39546: Encoder: HIPERFACE: Status: Multiturn counter fault (24h)
        Info(USINT): Slot
-40000: Parameter ID only for tests
 41001: Heatsink temperature sensor: Warning limit exceeded
        Info(REAL): Heatsink temperature
 41011: Temperature sensor (Motor|Choke|External): Warning limit exceeded
@@ -1823,6 +1796,8 @@
        Info(REAL): Load limit
 41096: DC bus: Peak total power: Warning limit exceeded
        Info(REAL): Load limit
+41097: DC connector temperature model: Warning limit exceeded
+       Info(REAL): Temperature
 64002: Delay before SW Reset (network with ascending node numbers ?)
 64003: Delay before NC System Start (network with ascending node numbers ?)
 64004: The following boot error could be entered here with a delay
@@ -1840,11 +1815,4 @@
 64011: Timeout for completion of encoder initialization
 64012: acp10sys does not contain an operating system for this ACOPOS hardware type
 64013: The basis initialization was aborted due to an error
-64500: Positive speed limiter active
-64501: Negative speed limiter active
-64502: Positive direction acceleration torque limiter active
-64503: Negative direction acceleration torque limiter active
-64504: Positive direction deceleration torque limiter active
-64505: Negative direction deceleration torque limiter active
-64506: Recovery power limiter active (deceleration too high)
 65535: Response error

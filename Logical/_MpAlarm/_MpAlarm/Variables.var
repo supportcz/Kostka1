@@ -1,0 +1,10 @@
+VAR
+	MpAlarmBasic_0 : MpAlarmBasic;
+	MpAlarmBasicUI_Main : MpAlarmBasicUI;
+	MpAlarmBasicUISetupMain : MpAlarmBasicUISetupType;
+	MpAlarmBasicUI_Axis1 : MpAlarmBasicUI;
+	MpAlarmBasicUISetupAxis1 : MpAlarmBasicUISetupType;
+	MpAlarmBasicUI_Axis2 : MpAlarmBasicUI;
+	MpAlarmBasicUISetupAxis2 : MpAlarmBasicUISetupType;
+	simMainAlarmIndex : INT;
+END_VAR

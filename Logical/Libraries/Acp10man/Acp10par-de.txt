@@ -23,9 +23,6 @@
    23: Geber3: DCM Abstandsdifferenz
    24: CTRL Vorsteuerung: Geschwindigkeitsmomentfaktor
    25: Leistungsbegrenzer: Modus
-   26: Minimal erforderliche ACOPOS-Betriebssystem Version
-   27: Maximal zulässige ACOPOS-Betriebssystem Version
-   29: Antriebs-Synchronisation: Stellgrößenbeschränkung
    30: Motor: Typ
    31: Motor: Softwarekompatibilität
    32: Motor: Prüfdatum
@@ -90,8 +87,6 @@
    91: Geber1: Istposition
    92: CTRL Lageregler: Istgeschwindigkeit
    93: CTRL Regler: Kommando
-   94: Position für zyklischen Status
-   95: Geschwindigkeit für zyklischen Status
    96: Geber1: Last-Maßstab: Zählrichtung
    97: Geber1: Typ
    98: Grenzwerte: Schleppfehler für Abbruch einer Bewegung
@@ -178,7 +173,6 @@
   179: Status: Zyklische Bits
   180: Meldungen: Fehlernummer
   181: Meldungen: Fehler-Zusatzinfo
-  182: Fehlerzeit
   183: Meldungen: Fehlersatz vom Antrieb
   184: Digitale Eingänge: Force-Freigabe-Bits
   185: Digitale Eingänge: Force-Funktion
@@ -186,16 +180,12 @@
   187: Prozessor-Zyklen Interrupt-SW
   188: Spitzenwert Prozessor-Zyklen Interrupt-SW
   189: Zeit für Netzwerk-Lebensüberwachung
-  190: Modus für zyklische externe Sollwertvorgabe
   191: Basis-Bewegungen: Anhalten
-  192: Zyklische Sollposition
-  193: Zyklische Sollposition Nachkommateil
   194: Kurvenautomat: Parameter rücksetzen
   195: VAX Kurvenautomat: Parameter rücksetzen
   196: Antriebs-Synchronisation: Offset Masterzeit
   197: Bewegungsabbruch: Bremsrampe nach Antriebsfehler
   198: Zyklische Kommunikation: Zeit für Lebensüberwachung der Daten zum Antrieb
-  199: Modus für Trigger-Halt
   200: Systemverwaltung: Modul: Löschen
   201: Systemverwaltung: Modul: Parameter-ID
   202: Systemverwaltung: Modul: Befehls-Sicherungs-Code
@@ -204,7 +194,6 @@
   205: Leistungsteil: Phase 1: AD-Wandlerwert
   206: Leistungsteil: Phase 2: AD-Wandlerwert
   207: Zyklische Kommunikation: Parameter-ID der Daten zum Antrieb
-  208: Zyklische Kommunikation: Offset der Daten zum Antrieb
   209: Leistungsteil: Phase 1: Strom
   210: Leistungsteil: Phase 2: Strom
   211: Motor-Haltebremse: Ansteuerungsüberwachungsfilterzeit
@@ -229,7 +218,6 @@
   230: CTRL Lageregler: Parameter-ID der Geber-Istposition
   231: CTRL Lageregler: Parameter-ID des Enable Eingangs
   232: Zyklische Kommunikation: Parameter-Index der Daten zum Antrieb
-  233: Zyklische Kommunikation: Telegramm-Index der Daten zum Antrieb
   234: Zyklische Kommunikation: Index eines Parametersatzes der Daten vom Antrieb
   235: Zyklische Kommunikation: Parameter-Index der Daten vom Antrieb
   236: Zyklische Kommunikation: Parameter-ID der Daten vom Antrieb
@@ -286,14 +274,7 @@
   287: Motor-Haltebremse: Elektrischer Status
   288: CTRL Drehzahl: Parameter-ID des additiven Sollwerts
   289: Geber2: Geber-Maßstab: Inkremente pro Geberumdrehung
-  290: Broadcast-CAN-ID für SYNC-Telegramm
-  291: Broadcast-CAN-ID für Broadcast-Kommando
   292: Funktions-Block: Konstante Null
-  293: Basis-CAN-ID für zyklisches Anwender-Telegramm zum Antrieb
-  294: Basis-CAN-ID für zyklisches Anwender-Telegramm vom Antrieb
-  295: Basis-CAN-ID für Write- und Read-Kanal2
-  296: Basis-CAN-ID für Write- und Read-Kanal3
-  297: Kommando: CAN-ID-Standardeinstellung
   298: CTRL Zwischenkreis: Spannung
   299: CTRL Zwischenkreis: Filterzeitkonstante
   300: CTRL Zwischenkreis: Spannungs-Erkennung: Untergrenze
@@ -301,7 +282,7 @@
   302: CTRL Zwischenkreis: Gefilterte Spannung
   303: Geber1: ADC1 Wert
   304: Fehlerstatus des Vektorreglers
-  305: CTRL Chopper: Stellgröße
+  305: CTRL Chopper: PWM-Tastverhältnis
   307: Maximale Motordrehzahl
   308: Maximale Statorquerstromkomponente (Begrenzung: IS_MAX)
   309: SafeMC: Istposition
@@ -311,7 +292,6 @@
   313: CTRL Drehzahl: Überwachung: Grenzdrehzahl
   314: CTRL Chopper: Minimales PWM-Tastverhältnis
   315: Leistungsteil: Sperrschicht-Temperaturmodell: Verlustleistung
-  316: Kommando: Geschwindigkeitsregelung ein-/ausschalten
   317: Kommando: Drehfeldregelung mit Statorspannungsvorgabe ein-/ausschalten
   318: Kommando: Drehfehlregelung mit Statorstromvorgabe ein-/ausschalten
   319: Kommando: Sollwertgenerator für unterlagerte Regler ein-/ausschalten
@@ -324,9 +304,6 @@
   326: Amplitude des Statorquerstroms für Rechteckgenerator
   327: Offset des Statorquerstroms für Rechteckgenerator
   328: CTRL Regler: Modus
-  329: CTRL Drehzahl: Solldrehzahl
-  330: Amplitude der Drehzahl für Rechteckgenerator
-  331: Offset der Drehzahl für Rechteckgenerator
   332: Einschaltzeit (maximale Amplitude des Rechteckimpulses)
   333: Ausschaltzeit (minimale Amplitude des Rechteckimpulses)
   334: Motor: Einphasen: Kommando
@@ -334,9 +311,7 @@
   336: Geber1: Fehler Status
   337: Geber2: Fehler Status
   338: Geber3: Fehler Status
-  339: CTRL Drehzahl: Normierte Solldrehzahl
   340: Meldungen: Kommando Fehlerzustand in die Fehler-FIFO schreiben
-  341: CTRL Drehzahl: Faktor für normierte Solldrehzahl
   342: Motor: Temperaturmodell: Last
   343: CTRL Momentbegrenzer: Override
   344: CTRL Momentbegrenzer: LIM_T1_POS-Override
@@ -351,14 +326,11 @@
   353: Leistungsteil: Überstrom Erdschluss: Zähler
   354: Schlupfwinkelgeschwindigkeit
   355: Antriebs-Synchronisation: Gesamtzeit
-  356: Antriebs-Synchronisation: Master
-  357: Antriebs-Synchronisation: Masterzykluszeit
   358: Digital IO: Status
   359: Antriebs-Synchronisation: Abweichung von Masterzeit
   360: Digital IO: Konfigurierung
   361: Kommando: Digitale Ausgänge setzen
   362: Kommando: Digitale Ausgänge löschen
-  363: Periodendauer des Sync-Telegramms
   364: Testvariable (Änderung der Zwischenkreisspannung)
   365: Leistungsteil: Kühler-Temperatursensor: AD-Wandlerwert
   366: Temperatursensor: AD-Wandlerwert
@@ -419,39 +391,11 @@
   421: Geber2: Last-Maßstab: Geberumdrehungen
   422: Geber2: Last-Maßstab: Zählrichtung
   423: Geber2: Istposition
-  424: Geber2: Referenzposition
-  425: Geber2: Referenzier-Modus-Steuerbits
-  426: Geber2: Kommando Referenzieren starten
   427: Geber2: Status Referenzposition gültig
   428: CTRL Lageregler: Eingangs-Sollposition
   429: Geber2: Zeitkonstante für Istpositions-Filter
-  430: Kommando: Kurvenscheibenkopplung starten
-  431: Kurvenscheibe: Master-Achse
   432: Kurvenautomat: Index und Daten der Polynom-Kurvenscheibe
-  433: Kurvenscheibe: Maximale Geschwindigkeit der Master-Achse
-  434: Kurvenscheibe: Startposition der Master-Achse
-  435: Kurvenscheibe: Synchronweg der Master-Achse
-  436: Kurvenscheibe: Ausgleichsweg der Master-Achse
-  437: Kurvenscheibe: Trigger-Modus Master-Achse
-  438: Kurvenscheibe: Relative Trigger-Position Master-Achse
-  439: Kurvenscheibe: Synchronweg der Slave-Achse
-  440: Kurvenscheibe: Ausgleichsweg der Slave-Achse
-  441: Kurvenscheibe: Relative Trigger-Position Slave-Achse
-  442: Kurvenscheibe: Trigger-Modus Slave-Achse
-  443: Kurvenscheibe: Minimaler Ausgleichsweg der Slave-Achse
-  444: Kurvenscheibe: Maximaler Ausgleichsweg der Slave-Achse
-  445: Kurvenscheibe: Ausgleichsgetriebe-Typ
-  446: Kurvenscheibe: Trigger-Fenster Slave-Achse
-  447: Kurvenscheibe: Status für Nockenschaltwerk Aktivierung
-  448: Kurvenscheibe: Ausgleichs-Trigger-Modus Master-Achse
-  449: Kurvenscheibe: Relative Position Ausgleichs-Trigger Master-Achse
-  450: CTRL Lageregler: Schalter für Regler-Modus
   451: Trace: Adresse für Test-Datum
-  452: Istposition steigende Flanke Trigger1
-  453: Istposition fallende Flanke Trigger1
-  454: Istposition steigende Flanke Trigger2
-  455: Istposition fallende Flanke Trigger2
-  456: Kurvenscheibe: Ausgleichs-Trigger-Fenster Master-Achse
   457: Zyklische Kommunikation: Modus
   458: Trace: Adresse für Trigger-Ereignis
   459: Digitale Eingänge: Endschalter ignorieren
@@ -467,33 +411,11 @@
   469: Meldungen: Status Fehlersatz vorhanden
   470: Meldungen: Status Warnungssatz vorhanden
   471: Status: Antrieb bereit
-  472: Kommando: Nockenschaltwerk starten/abbrechen
-  473: Nockenschaltwerk: Master-Achse
-  474: Nockenschaltwerk: ID für Online-Änderung der Startposition
-  475: Nockenschaltwerk: Startposition
-  476: Nockenschaltwerk: Intervall
-  477: Nockenschaltwerk: Index eines Parametersatzes für eine Spur
-  478: Nockenschaltwerk: Kanalnummer Digital-Ausgang
-  479: Nockenschaltwerk: Aktivierungs ID
-  480: Nockenschaltwerk: Schaltverzögerung
-  481: Nockenschaltwerk: Index eines Parametersatzes für eine Nocke
-  482: Nockenschaltwerk: Position innerhalb intervall für Ausgang EIN
-  483: Nockenschaltwerk: Position innerhalb intervall für Ausgang AUS
   484: Netzwerk-Kopplung: Parameter-ID der Sende-Daten Master1
   485: Netzwerk-Kopplung: Parameter-ID der Sende-Daten Master2
-  486: Kurvenscheibe: Min. Ausgleichs-Trigger Intervall Master-Achse
-  487: Kurvenscheibe: Max. Ausgleichs-Trigger Intervall Master-Achse
-  488: Kurvenscheibe: Min. Trigger Intervall Slave-Achse
-  489: Kurvenscheibe: Max. Trigger Intervall Slave-Achse
-  490: Kurvenscheibe: Trigger Verzögerungszeit Slave-Achse
-  491: Kommando: Regler ein-/ausschalten bei aktiver Kurvenscheibe
-  492: Kurvenscheibe: Additives Element der Master-Achse
-  493: Kurvenscheibe: Trigger-Fenster Master-Achse
   494: Netzwerk-Kopplung: Parameter-ID der Sende-Daten Master3
   495: Kurvenautomat: Index für den Start-Zustand
   496: VAX Kurvenautomat: Index für den Start-Zustand
-  497: Parameter1 für zyklischen Status
-  498: Parameter2 für zyklischen Status
   499: Interner Test-Parameter für Entwicklung
   500: Kurvenautomat: Kurvenscheiben Polynom-Daten
   501: Kurvenautomat: Index der Kurvenscheibendaten für Übertragung
@@ -520,29 +442,12 @@
   522: Kurvenautomat: Zähler Zustandswiederholungen für das Ereignis ncCOUNT
   523: Kurvenautomat: Minimaler Ausgleichsweg der Master-Achse
   524: Bewegungsabbruch: Kommando Quickstop
-  525: Bits im zyklischen Status für externe Sollwertvorgabe
-  526: Referenzieren: Offset für Istposition
   527: Kurvenautomat: Sperre für konsistente Online-Parameter-Änderung
   528: Kurvenautomat: Aktion bei Zustandsübergang
   529: Kurvenautomat: Kurventyp des aktuellen Zustands
-  530: Latch1: Trigger-Ereignis
-  531: Latch1: Parameter-ID des Latch-Wertes
-  532: Latch1: Fenster
-  533: Latch1: Position des Fensters und Aktivierung
-  534: Latch1: Ergebnis-Wert
-  535: Latch1: Status
-  536: Latch2: Trigger-Ereignis
-  537: Latch2: Parameter-ID des Latch-Wertes
-  538: Latch2: Fenster
-  539: Latch2: Position des Fensters und Aktivierung
-  540: Latch2: Ergebnis-Wert
-  541: Latch2: Status
   542: Netzwerk-Kopplung: Zyklische Position Master1
   543: Netzwerk-Kopplung: Zyklische Position Master2
   544: Parameter-Sequenz: Index und Daten
-  545: Kurvenscheibe: Bewegung frei geben
-  546: Kurvenscheibe: Übergang in den Stillstand und Bewegung sperren
-  547: Kurvenscheibe: Index des aktuellen Zustands
   548: Netzwerk-Kopplung: Zyklische Position Master3
   549: Kurvenautomat: Relative Startposition der Master-Achse in der Kurvenscheibe
   550: VAX Kurvenautomat: Relative Startposition der Master-Achse in der Kurvenscheibe
@@ -585,16 +490,11 @@
   587: Funktions-Block: Anwender R4 Variable2
   588: Kurvenautomat: Trigger1 Verzögerungszeit
   589: Kurvenautomat: Trigger2 Verzögerungszeit
-  590: Kurvenautomat: Regler ein-/ausschalten bei aktivem Kurvenautomaten
   591: Netzwerk-Kopplung: Stationsnummer des Senders
   592: Netzwerk-Kopplung: Master Parameter-ID der Sende-Station
   593: Netzwerk-Kopplung: Station zum Empfang auf MA1_CYCLIC_POS konfigurieren
   594: Netzwerk-Kopplung: Station zum Empfang auf MA2_CYCLIC_POS konfigurieren
   595: Netzwerk-Kopplung: Station zum Empfang auf MA3_CYCLIC_POS konfigurieren
-  596: Parameter-Normierung: Parameter-ID des Eingabewertes
-  597: Parameter-Normierung: Offset
-  598: Parameter-Normierung: Faktor
-  599: Parameter-Normierung: Ausgabewert (I2-Format)
   600: Verzögerung für positive SW-Endlage
   601: Verzögerung für negative SW-Endlage
   602: Netzwerk-Kopplung: Interpolationsmodus für zyklische Position Master1
@@ -610,10 +510,6 @@
   612: VAX Kurvenautomat: Parameter-ID für Ereignis
   613: Kurvenautomat: Minimale Geschwindigkeit der Slave-Achse im Ausgleich
   614: VAX Kurvenautomat: Minimale Geschwindigkeit der Slave-Achse im Ausgleich
-  615: Zyklische externe Sollwertvorgabe: Parameter-ID additive Sollposition
-  616: Positiver Endschalter
-  617: Negativer Endschalter
-  618: Kommando: Knotennummer einstellen
   619: Kurvenautomat: Kurvenoffset der Master-Achse
   620: Kurvenautomat: Kurvenoffset der Slave-Achse
   621: VAX Kurvenautomat: Kurvenoffset der Master-Achse
@@ -624,7 +520,6 @@
   626: Netzwerk-Kopplung: Multiplikationsfaktor der Zykluszeit
   627: Kurvenautomat: Zähler der Zustandsübergänge
   628: VAX Kurvenautomat: Zähler der Zustandsübergänge
-  629: VAX: Konfiguration
   630: VAX Meldungen: Fehlernummer
   631: VAX Meldungen: Fehler-Zusatzinfo
   632: VAX Meldungen: Fehlersatz
@@ -640,9 +535,6 @@
   642: VAX Basis-Bewegungen: Bewegung mit zyklischer Geschwindigkeitsvorgabe starten
   643: Basis-Bewegungen: Parameter-ID für zyklische Geschwindigkeit
   644: VAX Basis-Bewegungen: Parameter-ID für zyklische Geschwindigkeit
-  645: Netzwerk Empfangsfehlerzähler
-  646: Netzwerk Sendefehlerzähler
-  647: Netzwerk Stabilisierungszeit
   648: NCMAN: Test index
   649: NCMAN: Test I4
   650: NCMAN: Test R4
@@ -699,9 +591,6 @@
   702: Geber3: SSI Parity-Prüfung
   703: Geber3: Geber-Maßstab: Inkremente pro Geberumdrehung
   704: Geber3: Typ
-  705: Geber3: Referenzposition
-  706: Geber3: Referenzier-Modus-Steuerbits
-  707: Geber3: Kommando Referenzieren starten
   708: Geber3: Zeitkonstante für Istpositions-Filter
   709: Geber3: Status Referenzposition gültig
   710: Geber3: Gefilterte Istposition
@@ -747,17 +636,11 @@
   750: Parameter-Sequenz: Daten
   751: Parameter-Sequenz: Index für Übertragung
   752: Parameter-Sequenz: Parameter initialisieren
-  753: Kurvenscheibe: Werte in Trigger-FIFO beim ReStart löschen
-  754: Kurvenscheibe: Sollposition
   755: Geber1: Zeitkonstante für Istpositions-Filter
   756: Geber1: Gefilterte Istposition
   757: Antriebs-Synchronisation: Gesamtzeit im Lageregler-Zyklus
-  758: Nockenschaltwerk: Sperre für konsistente Online-Parameter-Änderung
-  759: Sperre für konsistente Online-Parameter-Änderung
   760: Kurvenautomat: Ereignis Status-Bits
   761: VAX Kurvenautomat: Ereignis Status-Bits
-  762: Meldungen: Fehlernummer für die Konfiguration
-  763: Meldungen: Konfigurations-Fehlernummer aktivieren
   764: Kurvenautomat: Maximale Geschwindigkeit der Slave-Achse im Ausgleich
   765: VAX Kurvenautomat: Maximale Geschwindigkeit der Slave-Achse im Ausgleich
   766: Kurvenautomat: Maximale Beschleunigung der Slave-Achse in Ausgleichs-Phase1
@@ -779,8 +662,6 @@
   782: VAX Basis-Bewegungen: Override
   783: VAX Basis-Bewegungen: Geschwindigkeits-Override
   784: VAX Basis-Bewegungen: Beschleunigungs-Override
-  785: Nockenschaltwerk: Schaltverzögerung für Ausgang EIN
-  786: Nockenschaltwerk: Schaltverzögerung für Ausgang AUS
   787: Zyklische Kommunikation: Parameter-Index der Monitor-Daten vom Antrieb
   788: Zyklische Kommunikation: Parameter-ID der Monitor-Daten vom Antrieb
   789: Zeit bei steigender Flanke Trigger1
@@ -791,7 +672,6 @@
   794: Digitale Eingänge: Status Enable
   795: Kurvenautomat: Parameter-ID für Multiplikationsfaktor der Slave-Achse
   796: VAX Kurvenautomat: Parameter-ID für Multiplikationsfaktor der Slave-Achse
-  797: Interpolationsmodus für zyklische externe Sollwertvorgabe
   798: Kurvenautomat: Meldungs-Modus-Steuerbits
   799: VAX Grenzwerte: SW-Endlagen ignorieren
   800: Grenzwerte: Mindestzeit für 'Regler aktiv' nach Bewegungsabbruch
@@ -1093,7 +973,7 @@
  1099: System-Variable9
  1100: Trace: Daten
  1101: Autotuning: Maximaler Prozentsatz für Nennstrom
- 1102: Autotuning: Maximaler Prozentsatz für Geschwindigkeit
+ 1102: Autotuning: Maximaler Prozentsatz für Geschwindigkeitsgrenzwert
  1103: Autotuning: Maximale Verfahrdistanz
  1104: Autotuning: Maximaler Schleppfehler
  1105: Autotuning: Schritt
@@ -1110,8 +990,8 @@
  1116: Autotuning: Verzögerungszeit bei transienten Vorgängen
  1117: Signalgenerator: Startfrequenz des Chirp-Signals
  1118: Signalgenerator: Stopfrequenz des Chirp-Signals
- 1119: RESERVED1119
- 1120: RESERVED1120
+ 1119: Autotuning: Maximale Proportional-Verstärkung
+ 1120: Autotuning: Beschleunigung
  1121: RESERVED1121
  1122: RESERVED1122
  1123: RESERVED1123
@@ -1186,15 +1066,10 @@
  1192: Geber3: SSI Anzahl der nachlaufenden Bits
  1193: Digitale Eingänge: Quickstop Bremsrampe
  1194: Antriebs-Synchronisation: Gesamtzeit im Netzwerk-Zyklus
- 1195: Systemverwaltung: Maximallänge der azyklischen Daten
  1196: CTRL Lageregler: Modus-Bits
  1197: Achsen Querverbindung: Achs-Nummer
  1198: Achsen Querverbindung: Parameter-ID
  1199: Bewegungsabbruch: Ruckzeit
- 1200: Broadcast-Anforderung des zyklischen Status
- 1201: Latch-Kommando für Antriebssynchronisierung
- 1202: Zeitstempel für Antriebssysnchronisierung
- 1203: Zyklische Status-Bits für externen Sollwert-Generator
  1204: Kurvenautomat: Index für relative Startposition der Master-Achse im Intervall
  1205: Kurvenautomat: Relative Startposition der Master-Achse im Intervall
  1206: VAX Kurvenautomat: Index für relative Startposition der Master-Achse im Intervall
@@ -1379,9 +1254,6 @@
  1390: Geber1: Baudrate
  1391: Geber2: Baudrate
  1392: Geber3: Baudrate
- 1393: Status: Modul-Beschleunigung in x-Richung
- 1394: Status: Modul-Beschleunigung in y-Richung
- 1395: Status: Modul-Beschleunigung in z-Richung
  1396: Upload der Modul-Monitordaten
  1397: RESERVED1397
  1398: RESERVED1398
@@ -1523,9 +1395,27 @@
  1540: Leistungsteil: Hauptrelais: Temperatur
  1541: Spindelsteigungsfehler-Losekompensation: Maximale Geschwindigkeit beim Losewechsel
  1542: Spindelsteigungsfehler-Losekompensation: Status
- 1544: Zwischenkreis: Kondensator: Temperatur
- 1545: Zwischenkreis: Dauersummenleistung: Last
- 1546: Zwischenkreis: Spitzensummenleistung: Last
+ 1543: Leistungsteil: DC-Anschluss: Temperatur
+ 1544: Leistungsteil: Kondensator: Temperatur
+ 1545: Leistungsteil: Dauersummenleistung: Last
+ 1546: Leistungsteil: Spitzensummenleistung: Last
+ 1547: Motor: Daten für Hardware-Information
+ 1548: 24 VDC Versorgung: Gefilterte Spannung
+ 1549: Basis-Bewegungen: Zielpositionsdifferenz für Modus 'Stop nach Trigger'
+ 1550: Sperrschicht-Temperaturmodell: Maximale Temperaturänderung
+ 1551: Virtueller Geber: Grenzwert für Positions-Schleppfehler
+ 1552: Virtueller Geber: Grenzwert für Geschwindigkeits-Schleppfehler
+ 1553: Virtueller Geber: Skalierfaktor für Strom
+ 1554: Temperatursensor: Motoranschluss: Widerstand
+ 1555: Temperatursensor: Einsteckmodul: Widerstand
+ 1556: Geber1: Versorgungspannung
+ 1557: CTRL Zwischenkreis: Regler: Kommando
+ 1558: Leistungsteil: Summenleistung
+ 1559: Leistungsteil: Dauersummenleistung: Grenzleistung
+ 1560: Leistungsteil: Spitzensummenleistung: Grenzleistung
+ 1561: Leistungsteil: Kondensator: Niederfrequenter Strom
+ 1562: Leistungsteil: Kondensator: Pulsfrequenter Strom
+ 1563: Leistungsteil: DC-Anschluss: Strom
  3072: FB LOGIC: Modus
  3080: FB LOGIC: Parameter-ID Eingang1
  3088: FB LOGIC: Parameter-ID Eingang2
@@ -1693,6 +1583,8 @@
  8360: FB CURVE: Maximale Beschleunigung der Slave-Achse in Ausgleichs-Phase2
  8368: FB CURVE: Ausgleichsgetriebe Kommandostatus
  8376: FB CURVE: Ausgleichsgetriebe Kommando Ergebnis
+ 8384: FB CURVE: Additiver Eingangs-Wert
+ 8392: FB CURVE: Additiver Ausgangs-Wert
  8704: FB IPL: Modus
  8712: FB IPL: Parameter-ID Eingang
  8720: FB IPL: Zykluszeit
@@ -1936,6 +1828,164 @@
 14480: FB DYNSYS: Systemzustand 4
 14488: FB DYNSYS: Systemzustand 5
 14496: FB DYNSYS: Zustand
+63488: LLM: Konfiguration der ADCs
+63489: LLM: der Achse zugewiesene, aktive Phasen
+63490: LLM: Anzahl der Phasen (Spulen) am Segment
+63491: LLM: gemessener Balancerstrom
+63492: LLM: Zwischenkreis: Mittenspannung
+63493: LLM: Balancer: Kommando
+63494: LLM: Balancer: Proportionalverstärkung
+63495: LLM: Balancer: Integratierzeitkonstante
+63496: LLM: Balancer: Status
+63501: LLM: gemessener Phasenstrom 1
+63502: LLM: gemessener Phasenstrom 2
+63503: LLM: gemessener Phasenstrom 3
+63504: LLM: gemessener Phasenstrom 4
+63505: LLM: gemessener Phasenstrom 5
+63506: LLM: gemessener Phasenstrom 6
+63507: LLM: gemessener Phasenstrom 7
+63508: LLM: gemessener Phasenstrom 8
+63509: LLM: gemessener Phasenstrom 9
+63510: LLM: gemessener Phasenstrom 10
+63511: LLM: gemessener Phasenstrom 11
+63512: LLM: gemessener Phasenstrom 12
+63513: LLM: gemessener Phasenstrom 13
+63514: LLM: gemessener Phasenstrom 14
+63515: LLM: gemessener Phasenstrom 15
+63516: LLM: gemessener Phasenstrom 16
+63517: LLM: gemessener Phasenstrom 17
+63518: LLM: gemessener Phasenstrom 18
+63519: LLM: gemessener Phasenstrom 19
+63520: LLM: gemessener Phasenstrom 20
+63521: LLM: gemessener Phasenstrom 21
+63522: LLM: gemessener Phasenstrom 22
+63523: LLM: gemessener Phasenstrom 23
+63524: LLM: gemessener Phasenstrom 24
+63525: LLM: gemessener Phasenstrom 25
+63526: LLM: gemessener Phasenstrom 26
+63527: LLM: gemessener Phasenstrom 27
+63528: LLM: gemessener Phasenstrom 28
+63529: LLM: gemessener Phasenstrom 29
+63530: LLM: gemessener Phasenstrom 30
+63531: LLM: gemessener Phasenstrom 31
+63532: LLM: gemessener Phasenstrom 32
+63533: LLM: gemessener Phasenstrom 33
+63534: LLM: gemessener Phasenstrom 34
+63535: LLM: gemessener Phasenstrom 35
+63536: LLM: gemessener Phasenstrom 36
+63537: LLM: gemessener Phasenstrom 37
+63538: LLM: gemessener Phasenstrom 38
+63539: LLM: gemessener Phasenstrom 39
+63540: LLM: gemessener Phasenstrom 40
+63541: LLM: gemessener Phasenstrom 41
+63542: LLM: gemessener Phasenstrom 42
+63543: RESERVED63543
+63544: RESERVED63544
+63545: RESERVED63545
+63546: RESERVED63546
+63547: RESERVED63547
+63548: RESERVED63548
+63549: RESERVED63549
+63550: RESERVED63550
+63551: LLM: Sollphasenstrom 1
+63552: LLM: Sollphasenstrom 2
+63553: LLM: Sollphasenstrom 3
+63554: LLM: Sollphasenstrom 4
+63555: LLM: Sollphasenstrom 5
+63556: LLM: Sollphasenstrom 6
+63557: LLM: Sollphasenstrom 7
+63558: LLM: Sollphasenstrom 8
+63559: LLM: Sollphasenstrom 9
+63560: LLM: Sollphasenstrom 10
+63561: LLM: Sollphasenstrom 11
+63562: LLM: Sollphasenstrom 12
+63563: LLM: Sollphasenstrom 13
+63564: LLM: Sollphasenstrom 14
+63565: LLM: Sollphasenstrom 15
+63566: LLM: Sollphasenstrom 16
+63567: LLM: Sollphasenstrom 17
+63568: LLM: Sollphasenstrom 18
+63569: LLM: Sollphasenstrom 19
+63570: LLM: Sollphasenstrom 20
+63571: LLM: Sollphasenstrom 21
+63572: LLM: Sollphasenstrom 22
+63573: LLM: Sollphasenstrom 23
+63574: LLM: Sollphasenstrom 24
+63575: LLM: Sollphasenstrom 25
+63576: LLM: Sollphasenstrom 26
+63577: LLM: Sollphasenstrom 27
+63578: LLM: Sollphasenstrom 28
+63579: LLM: Sollphasenstrom 29
+63580: LLM: Sollphasenstrom 30
+63581: LLM: Sollphasenstrom 31
+63582: LLM: Sollphasenstrom 32
+63583: LLM: Sollphasenstrom 33
+63584: LLM: Sollphasenstrom 34
+63585: LLM: Sollphasenstrom 35
+63586: LLM: Sollphasenstrom 36
+63587: LLM: Sollphasenstrom 37
+63588: LLM: Sollphasenstrom 38
+63589: LLM: Sollphasenstrom 39
+63590: LLM: Sollphasenstrom 40
+63591: LLM: Sollphasenstrom 41
+63592: LLM: Sollphasenstrom 42
+63593: RESERVED63593
+63594: RESERVED63594
+63595: RESERVED63595
+63596: RESERVED63596
+63597: RESERVED63597
+63598: RESERVED63598
+63599: RESERVED63599
+63600: RESERVED63600
+63601: LLM: Sollphasenspannung 1
+63602: LLM: Sollphasenspannung 2
+63603: LLM: Sollphasenspannung 3
+63604: LLM: Sollphasenspannung 4
+63605: LLM: Sollphasenspannung 5
+63606: LLM: Sollphasenspannung 6
+63607: LLM: Sollphasenspannung 7
+63608: LLM: Sollphasenspannung 8
+63609: LLM: Sollphasenspannung 9
+63610: LLM: Sollphasenspannung 10
+63611: LLM: Sollphasenspannung 11
+63612: LLM: Sollphasenspannung 12
+63613: LLM: Sollphasenspannung 13
+63614: LLM: Sollphasenspannung 14
+63615: LLM: Sollphasenspannung 15
+63616: LLM: Sollphasenspannung 16
+63617: LLM: Sollphasenspannung 17
+63618: LLM: Sollphasenspannung 18
+63619: LLM: Sollphasenspannung 19
+63620: LLM: Sollphasenspannung 20
+63621: LLM: Sollphasenspannung 21
+63622: LLM: Sollphasenspannung 22
+63623: LLM: Sollphasenspannung 23
+63624: LLM: Sollphasenspannung 24
+63625: LLM: Sollphasenspannung 25
+63626: LLM: Sollphasenspannung 26
+63627: LLM: Sollphasenspannung 27
+63628: LLM: Sollphasenspannung 28
+63629: LLM: Sollphasenspannung 29
+63630: LLM: Sollphasenspannung 30
+63631: LLM: Sollphasenspannung 31
+63632: LLM: Sollphasenspannung 32
+63633: LLM: Sollphasenspannung 33
+63634: LLM: Sollphasenspannung 34
+63635: LLM: Sollphasenspannung 35
+63636: LLM: Sollphasenspannung 36
+63637: LLM: Sollphasenspannung 37
+63638: LLM: Sollphasenspannung 38
+63639: LLM: Sollphasenspannung 39
+63640: LLM: Sollphasenspannung 40
+63641: LLM: Sollphasenspannung 41
+63642: LLM: Sollphasenspannung 42
+63643: RESERVED63643
+63644: RESERVED63644
+63645: RESERVED63645
+63646: RESERVED63646
+63647: RESERVED63647
+63648: RESERVED63648
+63649: RESERVED63649
 64201: Antriebsanpassung: Geschwindigkeit bei maximalem Ausgangswert
 64225: Geber1: Wertebereich der Geberposition
 64232: Schrittmotor: Schrittauflösung: Schritte pro Motorumdrehung

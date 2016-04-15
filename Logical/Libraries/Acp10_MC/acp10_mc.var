@@ -259,4 +259,5 @@ VAR CONSTANT
 	mcWITH_FF : USINT := 0; (*torque limit mode*)
 	mcWITHOUT_FF : USINT := 1; (*torque limit mode*)
 	mcWRAP : UINT := 2;
+	mcWRITE_DIRECT : UINT := 256; (*cyclic write mode*)
 END_VAR

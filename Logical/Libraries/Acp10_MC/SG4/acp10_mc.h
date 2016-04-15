@@ -16,6 +16,7 @@ extern "C" {
 
 /* Constants */
 #ifdef _REPLACE_CONST
+ #define mcWRITE_DIRECT 256U
  #define mcWRAP 2U
  #define mcWITHOUT_FF 1U
  #define mcWITH_FF 0U
@@ -277,6 +278,7 @@ extern "C" {
  #define mcABOVE_WINDOW 40U
  #define mc5TH_ORDER_POLYNOMIAL 4U
 #else
+ _IEC_CONST unsigned short mcWRITE_DIRECT = 256U;
  _IEC_CONST unsigned short mcWRAP = 2U;
  _IEC_CONST unsigned char mcWITHOUT_FF = 1U;
  _IEC_CONST unsigned char mcWITH_FF = 0U;
@@ -1048,6 +1050,8 @@ typedef struct MC_SETUP_CONTROLLER_PAR_REF
 	float MaxLagError;
 	float PropAmplificationPercent;
 	unsigned long SignalOrder;
+	float MaxPropAmplification;
+	float Acceleration;
 } MC_SETUP_CONTROLLER_PAR_REF;
 
 typedef struct MC_SETUP_CONTROLLER_CFG_REF

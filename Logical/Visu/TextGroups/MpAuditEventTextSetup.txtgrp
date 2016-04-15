@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.2.4.149"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="MpAuditEventTextSetup">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="0"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="132566" Value="[%[TIME=%u%T]] [%op] [%ev$[TEXT=0]]"/>
+    <Text ID="132567" Value="User-Action [%act$[TEXT=g1163]] ([%usr])"/>
+    <Text ID="132568" Value="changed DP:[%dpid$[TEXT=g1161]] [%old] to [%new]"/>
+    <Text ID="132569" Value="changed VCDP:[%dpid$[TEXT=g1161]] [%old] to [%new]"/>
+    <Text ID="132570" Value="[%typ$[TEXT=4]]"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="132566" Value="[%[TIME=%u%T]] [%op] [%ev$[TEXT=0]]"/>
+    <Text ID="132567" Value="Anwender Aktion [%act$[TEXT=g1163]] ([%usr])"/>
+    <Text ID="132568" Value="Geänderter DP:[%dpid$[TEXT=g1161]] [%old] to [%new]"/>
+    <Text ID="132569" Value="Geänderter VCDP:[%dpid$[TEXT=g1161]] [%old] to [%new]"/>
+    <Text ID="132570" Value="[%typ$[TEXT=4]]"/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="132566" Value="0"/>
+    <Index ID="132567" Value="2"/>
+    <Index ID="132568" Value="16"/>
+    <Index ID="132569" Value="17"/>
+    <Index ID="132570" Value="18"/>
+  </IndexMap>
+</TextGroup>

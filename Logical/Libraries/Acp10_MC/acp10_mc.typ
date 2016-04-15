@@ -388,6 +388,8 @@ TYPE
 		MaxLagError : REAL; (*maximum lag error which can occure durring the setup*)
 		PropAmplificationPercent : REAL; (*percentage for proportional amplification [%]*)
 		SignalOrder : UDINT; (*order of excitation signal*)
+        MaxPropAmplification : REAL; (*maximum proportional amplification [Asec] for mcSPEED, [1/sec] for mcPOSITION*)
+        Acceleration : REAL; (*acceleration [units/sec²]*)
 	END_STRUCT;
 	MC_SETUP_IND_MOTOR_CFG_REF : 	STRUCT  (*structure with the configuration parameters*)
 		DatObj : MC_DATOBJ_REF; (*parameters for saving the setup data*)
@@ -1012,7 +1014,7 @@ TYPE
 		Reserve2 : UINT; (*alignment*)
 		cycleTime : UDINT; (*internal variable*)
 	END_STRUCT;
-	MC_0099_IS_TYP : 	STRUCT  (*internal structure for MC_BR_AutomatCommand*)
+	MC_0099_IS_TYP : 	STRUCT  (*internal structure for MC_BR_AutCommand*)
 		Enable : BOOL; (*internal variable*)
 		Start : BOOL; (*internal variable*)
 		Stop : BOOL; (*internal variable*)

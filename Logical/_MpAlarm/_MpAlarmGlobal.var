@@ -1,0 +1,3 @@
+VAR
+	MainAlarmUIConnect : MpAlarmBasicUIConnect100Type; (*Structure contains Alarm, Acknowledge and AddInfo arrays for VC4*)
+END_VAR
